@@ -1,0 +1,146 @@
+.header-title{
+    font-size: 30px;
+    font-family: "Raleway", sans-serif;
+    color: #06c199;
+}
+
+.about {
+    padding: 140px 0;
+    background: white;
+    position: relative;
+}
+
+.btn-get-started {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 50px;
+    transition: 0.5s;
+    line-height: 1;
+    margin: 10px;
+    color: #06c199;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+    border: 2px solid #06c199;
+  }
+
+  .nav-menu > ul > li > a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #06c199;
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+#topbar .contact-info i {
+    color: #06c199;
+    padding-right: 4px;
+}
+
+#topbar .cta a {
+    color: #fff;
+    background: #06c199;
+    padding: 6px 24px 8px 24px;
+    display: inline-block;
+    transition: 0.3s;
+    border-radius: 50px;
+}
+
+#skill{
+    background-color: #06c199;
+    color:white;
+}
+
+.m-top30{
+    margin-top:30px;
+}
+
+.about{
+    padding: 15px;
+    background-color: #c1e2fc;
+}
+
+.about .faq-list {
+    padding: 0px;
+}
+
+.about .faq-list ul {
+    padding: 0;
+    list-style: none;
+}
+
+.about .faq-list li + li {
+    margin-top: 15px;
+}
+
+.about .faq-list li {
+    padding: 20px;
+    background: #fff;
+    border-radius: 4px;
+    position: relative;
+}
+
+.about .faq-list a {
+    display: block;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    padding: 0px;
+    outline: none;
+}
+
+.about .faq-list .icon-help {
+    font-size: 24px;
+    position: absolute;
+    right: 0;
+    left: 20px;
+    color: #75bdfa;
+}
+
+.about .faq-list .icon-show, .faq .faq-list .icon-close {
+    font-size: 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.about .faq-list p {
+    margin-bottom: 0;
+    padding: 10px 0 0 0;
+}
+
+.about .faq-list .icon-show {
+    display: none;
+}
+
+.about .faq-list a.collapsed {
+    color: #343a40;
+}
+
+.about .faq-list a.collapsed:hover {
+    color: #0880e8;
+}
+
+.about .faq-list a.collapsed .icon-show {
+    display: inline-block;
+}
+
+.about .faq-list a.collapsed .icon-close {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .about .faq-list {
+        padding: 0;
+    }
+}

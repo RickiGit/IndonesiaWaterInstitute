@@ -1,0 +1,27 @@
+.btn-create-data{
+    margin-bottom: 10px;
+    float: right;
+}
+
+.title-table{
+    float:left;
+    margin-top:10px !important;
+}
+
+.m-bottom5{
+    margin-bottom:5px;
+}
+
+.m-bottom10{
+    margin-bottom:10px;
+}
+
+.btn-save{
+    margin-right: 15px;
+    min-width:200px;
+}
+
+.img-avatar{
+    width:50px !important;
+    height:50px !important;
+}
