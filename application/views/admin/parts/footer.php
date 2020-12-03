@@ -57,6 +57,7 @@
 
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url()?>assets/admin/js/demo/datatables-demo.js"></script>
+    <script src="<?php echo base_url()?>assets/summernote/summernote-bs4.js"></script>
     <script src="<?php echo base_url()?>assets/admin/js/function.js"></script>
 
 </body>

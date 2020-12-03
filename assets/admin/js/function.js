@@ -1,4 +1,100 @@
-// Insert Data Teams
+var getUrl = window.location;
+var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
+$(document).ready(function(){
+    $('#vision').summernote({
+        height: "150px",
+        callbacks: {
+            onImageUpload: function(image) {
+                uploadImageVision(image[0], "#vision");
+            },
+            onMediaDelete : function(target) {
+                deleteImage(target[0].src);
+            }
+        }
+    });
+
+    $('#mission').summernote({
+        height: "150px",
+        callbacks: {
+            onImageUpload: function(image) {
+                uploadImageVision(image[0], "#mission");
+            },
+            onMediaDelete : function(target) {
+                deleteImage(target[0].src);
+            }
+        }
+    });
+
+    $('#strategy').summernote({
+        height: "150px",
+        callbacks: {
+            onImageUpload: function(image) {
+                uploadImageVision(image[0], "#strategy");
+            },
+            onMediaDelete : function(target) {
+                deleteImage(target[0].src);
+            }
+        }
+    });
+
+    $('#history').summernote({
+        height: "150px",
+        callbacks: {
+            onImageUpload: function(image) {
+                uploadImageVision(image[0], "#history");
+            },
+            onMediaDelete : function(target) {
+                deleteImage(target[0].src);
+            }
+        }
+    });
+
+    $('#contentdesc').summernote({
+        height: "180px",
+        callbacks: {
+            onImageUpload: function(image) {
+                uploadImageVision(image[0], "#contentdesc");
+            },
+            onMediaDelete : function(target) {
+                deleteImage(target[0].src);
+            }
+        }
+    });
+
+    function uploadImageVision(image, target) {
+        var data = new FormData();
+        data.append("image", image);
+        $.ajax({
+            url: "uploadimage",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: data,
+            type: "POST",
+            success: function(url) {
+                $(target).summernote("insertImage", url);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    }
+
+    function deleteImage(src) {
+        $.ajax({
+            data: {src : src},
+            type: "POST",
+            url: "deleteimage",
+            cache: false,
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    }
+
+});
+// Insert Data Team
 $("#submitTeams").on('submit' , function(e) {
     e.preventDefault();
     var name=$('#name').val();
@@ -32,6 +128,7 @@ $("#submitTeams").on('submit' , function(e) {
 $("#submitEditTeams").on('submit' , function(e) {
     e.preventDefault();
     debugger;
+
     var id=$('#id').val();
     var name=$('#name').val();
     var job=$('#position').val();
@@ -52,7 +149,8 @@ $("#submitEditTeams").on('submit' , function(e) {
             processData: false,
             contentType: false,
             success: function(data){
-                console.log(data);
+                alert(data);
+                window.location = baseUrl + '/admin/teams';
             }
         });
     }
@@ -60,6 +158,192 @@ $("#submitEditTeams").on('submit' , function(e) {
     return false;
 });
 
+// Update Data About
+$("#submitEditAbout").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+
+    var id=$('#id').val();
+    var vision=$('#vision').val();
+    var mission=$('#mission').val();
+    var strategy=$('#strategy').val();
+    var history=$('#history').val();
+    var urlAction = $('#submitEditAbout').attr('action');
+
+    var formData = new FormData(this);
+
+    if(vision == "" || mission == "" || strategy == "" || history == ""){
+        alert("Vision, Mission, Strategy, and History can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/about';
+            }
+        });
+    }
+
+    return false;
+});
+
+// Update Data Contact
+$("#submitEditContact").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+
+    var address=$('#address').val();
+    var email=$('#email').val();
+    var phone=$('#phone').val();
+    var urlAction = $('#submitEditContact').attr('action');
+
+    var formData = new FormData(this);
+
+    if(address == "" || email == "" || phone == "" ){
+        alert("Address, Email, and Phone can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/contact';
+            }
+        });
+    }
+
+    return false;
+});
+
+// Insert Data Services
+$("#submitServices").on('submit' , function(e) {
+    e.preventDefault();
+    var name=$('#name').val();
+    var formData = new FormData(this);
+
+    if(name == ""){
+        alert("Name can't be empty");
+    }else{
+        $.ajax({
+            url:"insertservices",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                clearFormServices();
+                alert(data);
+            }
+        });
+    }
+
+    return false;
+});
+
+// Update Data Services
+$("#submitEditServices").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+
+    var name=$('#name').val();
+    var urlAction = $('#submitEditServices').attr('action');
+
+    var formData = new FormData(this);
+
+    if(name == ""){
+        alert("Name can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/services';
+            }
+        });
+    }
+
+    return false;
+});
+
+// Insert Data Projects
+$("#submitProjects").on('submit' , function(e) {
+    e.preventDefault();
+    var title=$('#title').val();
+    var content=$('#contentdesc').val();
+    var image=$('#image').val();
+    var formData = new FormData(this);
+
+    if(title == "" || content == "" || image == ""){
+        alert("Title, Cover, and Content can't be empty");
+    }else{
+        $.ajax({
+            url:"insertproject",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                clearFormProjects();
+                alert(data);
+            }
+        });
+    }
+
+    return false;
+});
+
+// Update Data Projects
+$("#submitEditProjects").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+
+    var title=$('#title').val();
+    var content=$('#contentdesc').val();
+    var urlAction = $('#submitEditProjects').attr('action');
+
+    var formData = new FormData(this);
+
+    if(title == "" || content == ""){
+        alert("Title and Content can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/projects';
+            }
+        });
+    }
+
+    return false;
+});
 
 // Clear Form Teams
 function clearFormTeams(){
@@ -71,4 +355,18 @@ function clearFormTeams(){
     $("#twitter").val("");
     $("#linkedin").val("");
     $("#instagram").val("");
+}
+
+// Clear Form Services
+function clearFormServices(){
+    $("#name").val("");
+    $("#description").val("");
+}
+
+// Clear Form Services
+function clearFormProjects(){
+    $("#title").val("");
+    $("#contentdesc").summernote("reset");
+    $("#image").val("");
+    $("select#status")[0].selectedIndex = 0;
 }
