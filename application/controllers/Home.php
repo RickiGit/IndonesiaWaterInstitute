@@ -5,14 +5,13 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$this->session->set_userdata('site_lang', "english");
 		$this->load->view('view_public_home');
 	}
 
-	function languages()	{
-		extract($_POST);
-		$this->session->set_userdata('language', $dlang);
-		$redirect_url = base_url().$current;
-		redirect($redirect_url);	
- 
-	 }
+	function switchLang($language = "") {
+        $language = ($language != "") ? $language : "english";
+        $this->session->set_userdata('site_lang', $language);
+        redirect($_SERVER['HTTP_REFERER']);
+	}
 }

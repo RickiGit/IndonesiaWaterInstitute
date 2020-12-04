@@ -23,5 +23,10 @@
             $this->db->where('id', $id);
             $this->db->delete($table);
         }
+
+        public function deleteByColumn($table, $id, $column){
+            $this->db->where($column, $id);
+            $this->db->delete($table);
+        }
     }
 ?>

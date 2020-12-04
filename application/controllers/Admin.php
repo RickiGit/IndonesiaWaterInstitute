@@ -7,7 +7,8 @@ class Admin extends CI_Controller {
         parent::__construct();
 
         $this->load->library('upload');
-        $this->load->model("GlobalModel");
+		$this->load->model("GlobalModel");
+		$this->load->model("ClientModel");
 	}
 
 	public function index()
@@ -363,6 +364,175 @@ class Admin extends CI_Controller {
             $this->GlobalModel->update('projects', $data, $id);
             echo "Data changed successfully";
         }
+	}
+
+	// Inbox
+	public function inbox(){
+		$data['inbox'] = $this->GlobalModel->getAll('inbox');
+		$this->load->view('view_admin_inbox', $data);
+	}
+
+	// Client Country
+	public function country(){
+		$data['country'] = $this->GlobalModel->getAll('country');
+		$this->load->view('view_admin_country', $data);
+	}
+
+	public function createcountry(){
+		$this->load->view('view_admin_country_create');
+	}
+
+	public function insertcountry(){
+		$name = $this->input->post('name');
+
+        $data = array(
+			'name' => $name,
+			'created' => date('Y-m-d H:i:s'),
+			'createdby' => 'Ricki'
+		);
+
+		$this->GlobalModel->insert('country', $data);
+		echo "Data saved successfully";
+	}
+
+	public function editcountry($id){
+		$data['country'] = $this->GlobalModel->getById('country', $id);
+		$this->load->view('view_admin_country_edit', $data);
+	}
+
+	public function deletecountry($id){
+        $data['item'] = $this->GlobalModel->getById('country',$id);
+		$this->GlobalModel->delete('country', $id);
+		$this->GlobalModel->deleteByColumn('client', $id, 'idcountry');
+        redirect('admin/country');
+	}
+
+	public function updatecountry($id){
+
+		$name = $this->input->post('name');
+
+        $data = array(
+			'name' => $name,
+			'modified' => date('Y-m-d H:i:s'),
+			'modifiedby' => 'Ricki'
+		);
+
+		$this->GlobalModel->update('country', $data, $id);
+		echo "Data changed successfully";
+	}
+
+	// Client
+	public function client(){
+		$data['client'] = $this->ClientModel->getAllClient();
+		$this->load->view('view_admin_client', $data);
+	}
+
+	public function createclient(){
+		$data['country'] = $this->GlobalModel->getAll('country');
+		$this->load->view('view_admin_client_create', $data);
+	}
+
+	public function deleteclient($id){
+        $data['item'] = $this->GlobalModel->getById('client',$id);
+		$this->GlobalModel->delete('client', $id);
+        redirect('admin/client');
+	}
+
+	public function editclient($id){
+		$data['client'] = $this->GlobalModel->getById('client', $id);
+		$data['country'] = $this->GlobalModel->getAll('country');
+		$this->load->view('view_admin_client_edit', $data);
+	}
+
+	public function insertclient(){
+		$name = $this->input->post('name');
+		$idcountry = $this->input->post('country');
+
+        $data = array(
+			'name' => $name,
+			'idcountry' => $idcountry,
+			'created' => date('Y-m-d H:i:s'),
+			'createdby' => 'Ricki'
+		);
+
+		$this->GlobalModel->insert('client', $data);
+		echo "Data saved successfully";
+	}
+
+	public function updateclient($id){
+
+		$name = $this->input->post('name');
+		$idcountry = $this->input->post('country');
+
+        $data = array(
+			'name' => $name,
+			'idcountry' => $idcountry,
+			'modified' => date('Y-m-d H:i:s'),
+			'modifiedby' => 'Ricki'
+		);
+
+		$this->GlobalModel->update('client', $data, $id);
+		echo "Data changed successfully";
+	}
+
+	// Client
+	public function book(){
+		$data['book'] = $this->GlobalModel->getAll('book');
+		$this->load->view('view_admin_book', $data);
+	}
+
+	public function createbook(){
+		$this->load->view('view_admin_book_create');
+	}
+
+	public function editbook($id){
+		$data['book'] = $this->GlobalModel->getById('book', $id);
+		$this->load->view('view_admin_book_edit', $data);
+	}
+
+	public function deletebook($id){
+        $data['item'] = $this->GlobalModel->getById('book',$id);
+		$this->GlobalModel->delete('book', $id);
+        redirect('admin/book');
+	}
+
+	public function insertbook(){
+		$title = $this->input->post('title');
+		$author = $this->input->post('author');
+		$publisher = $this->input->post('publisher');
+		$type = $this->input->post('type');
+
+        $data = array(
+			'title' => $title,
+			'author' => $author,
+			'publisher' => $publisher,
+			'type' => $type,
+			'created' => date('Y-m-d H:i:s'),
+			'createdby' => 'Ricki'
+		);
+
+		$this->GlobalModel->insert('book', $data);
+		echo "Data saved successfully";
+	}
+
+	public function updatebook($id){
+
+		$title = $this->input->post('title');
+		$author = $this->input->post('author');
+		$publisher = $this->input->post('publisher');
+		$type = $this->input->post('type');
+
+        $data = array(
+			'title' => $title,
+			'author' => $author,
+			'publisher' => $publisher,
+			'type' => $type,
+			'modified' => date('Y-m-d H:i:s'),
+			'modifiedby' => 'Ricki'
+		);
+
+		$this->GlobalModel->update('book', $data, $id);
+		echo "Data changed successfully";
 	}
 
 	// Upload Delete Image Content

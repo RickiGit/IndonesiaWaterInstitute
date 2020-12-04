@@ -345,6 +345,185 @@ $("#submitEditProjects").on('submit' , function(e) {
     return false;
 });
 
+// Insert Data Country
+$("#submitCountry").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+    var name=$('#name').val();
+    var formData = new FormData(this);
+
+    if(name == ""){
+        alert("Name can't be empty");
+    }else{
+        $.ajax({
+            url:"insertcountry",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                clearFormCountry();
+                alert(data);
+            }
+        });
+    }
+
+    return false;
+});
+
+// Update Data Projects
+$("#submitEditCountry").on('submit' , function(e) {
+    e.preventDefault();
+
+    var name=$('#name').val();
+    var urlAction = $('#submitEditCountry').attr('action');
+
+    var formData = new FormData(this);
+
+    if(name == ""){
+        alert("Name can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/country';
+            }
+        });
+    }
+
+    return false;
+});
+
+// Insert Data Client
+$("#submitClient").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+    var name=$('#name').val();
+    var country=$('#country').val();
+    var formData = new FormData(this);
+
+    if(name == ""){
+        alert("Name can't be empty");
+    }else{
+        $.ajax({
+            url:"insertclient",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                clearFormCountry();
+                alert(data);
+            }
+        });
+    }
+
+    return false;
+});
+
+// Update Data Client
+$("#submitEditClient").on('submit' , function(e) {
+    e.preventDefault();
+
+    var name=$('#name').val();
+    var urlAction = $('#submitEditClient').attr('action');
+
+    var formData = new FormData(this);
+
+    if(name == ""){
+        alert("Name can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/client';
+            }
+        });
+    }
+
+    return false;
+});
+
+// Insert Data Book
+$("#submitBook").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+    var title=$('#title').val();
+    var author=$('#author').val();
+    var publisher=$('#publisher').val();
+    var formData = new FormData(this);
+
+    if(title == "" || author == "" || publisher == ""){
+        alert("Title, Author, and Publisher can't be empty");
+    }else{
+        $.ajax({
+            url:"insertbook",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                clearFormBook();
+                alert(data);
+            }
+        });
+    }
+
+    return false;
+});
+
+// Update Data Book
+$("#submitEditBook").on('submit' , function(e) {
+    e.preventDefault();
+
+    var title=$('#title').val();
+    var author=$('#author').val();
+    var publisher=$('#publisher').val();
+    var urlAction = $('#submitEditBook').attr('action');
+
+    var formData = new FormData(this);
+
+    if(title == "" || author == "" || publisher == ""){
+        alert("Title, Author, and Publisher can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/book';
+            }
+        });
+    }
+
+    return false;
+});
+
 // Clear Form Teams
 function clearFormTeams(){
     $("#name").val("");
@@ -369,4 +548,17 @@ function clearFormProjects(){
     $("#contentdesc").summernote("reset");
     $("#image").val("");
     $("select#status")[0].selectedIndex = 0;
+}
+
+// Clear Form Services
+function clearFormCountry(){
+    $("#name").val("");
+}
+
+// Clear Form Book
+function clearFormBook(){
+    $("#title").val("");
+    $("#author").val("");
+    $("#publisher").val("");
+    $("select#type")[0].selectedIndex = 0;
 }
