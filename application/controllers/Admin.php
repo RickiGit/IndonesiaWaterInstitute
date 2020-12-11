@@ -535,6 +535,218 @@ class Admin extends CI_Controller {
 		echo "Data changed successfully";
 	}
 
+	// News
+	public function news(){
+		$data['news'] = $this->GlobalModel->getAll('news');
+		$this->load->view('view_admin_news', $data);
+	}
+
+	public function createnews(){
+		$this->load->view('view_admin_news_create');
+	}
+
+	public function insertnews(){
+		$config['upload_path']          = './assets/images/news/';
+        $config['allowed_types']        = 'gif|jpg|png';
+		$config['overwrite']			= true;
+
+		$this->upload->initialize($config);
+		$this->load->library('upload', $config);
+
+		$title = $this->input->post('title');
+		$content = $this->input->post('contentdesc');
+
+        if (!$this->upload->do_upload('image'))
+        {
+            $error = $this->upload->display_errors();
+            echo $error;
+        }
+        else
+        {
+            $data = array(
+                'title' => $title,
+				'content' => $content,
+                'cover' => $this->upload->data("file_name"),
+                'created' => date('Y-m-d H:i:s'),
+                'createdby' => 'Ricki'
+            );
+
+            $this->GlobalModel->insert('news', $data);
+            echo "Data saved successfully";
+        }
+	}
+
+	public function updatenews($id){
+		$config['upload_path']          = './assets/images/news/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['overwrite']			= true;
+
+        $this->upload->initialize($config);
+        $this->load->library('upload', $config);
+
+        $title = $this->input->post('title');
+		$content = $this->input->post('contentdesc');
+
+        if (!empty($_FILES['image']['name'])) {
+            if (!$this->upload->do_upload('image'))
+            {
+                $error = $this->upload->display_errors();
+                echo $error;
+            }
+            else
+            {
+                $data = array(
+                    'title' => $title,
+					'content' => $content,
+                	'cover' => $this->upload->data("file_name"),
+					'modified' => date('Y-m-d H:i:s'),
+					'modifiedby' => 'Ricki'
+                );
+
+                unlink(FCPATH.'assets/images/news/'.$currentImage);
+                $this->GlobalModel->update('news', $data, $id);
+                echo "Data changed successfully";
+            }
+        }else{
+            $data = array(
+				'title' => $title,
+				'content' => $content,
+				'modified' => date('Y-m-d H:i:s'),
+				'modifiedby' => 'Ricki'
+			);
+
+            $this->GlobalModel->update('news', $data, $id);
+            echo "Data changed successfully";
+        }
+	}
+
+	public function editnews($id){
+		$data['news'] = $this->GlobalModel->getById('news', $id);
+		$this->load->view('view_admin_news_edit', $data);
+	}
+
+	public function deletenews($id){
+        $data['item'] = $this->GlobalModel->getById('news',$id);
+		$this->GlobalModel->delete('news', $id);
+        redirect('admin/news');
+	}
+
+	// User
+	public function user(){
+		$data['user'] = $this->GlobalModel->getAll('user');
+		$this->load->view('view_admin_user', $data);
+	}
+
+	public function createuser(){
+		$this->load->view('view_admin_user_create');
+	}
+
+	public function edituser($id){
+		$data['user'] = $this->GlobalModel->getById('user', $id);
+		$this->load->view('view_admin_user_edit', $data);
+	}
+
+	public function deleteuser($id){
+        $data['item'] = $this->GlobalModel->getById('user',$id);
+		$this->GlobalModel->delete('user', $id);
+        redirect('admin/user');
+	}
+	
+	public function insertuser(){
+		$config['upload_path']          = './assets/images/user/';
+        $config['allowed_types']        = 'gif|jpg|png';
+		$config['overwrite']			= true;
+
+		$this->upload->initialize($config);
+		$this->load->library('upload', $config);
+
+		$name = $this->input->post('name');
+		$gender = $this->input->post('gender');
+		$phone = $this->input->post('phone');
+		$email = $this->input->post('email');
+		$level = $this->input->post('level');
+		$password =password_hash($this->input->post('password'), PASSWORD_DEFAULT); 
+
+        if (!$this->upload->do_upload('image'))
+        {
+            $error = $this->upload->display_errors();
+            echo $error;
+        }
+        else
+        {
+            $data = array(
+                'name' => $name,
+				'gender' => $gender,
+				'phone' => $phone,
+				'email' => $email,
+				'level' => $level,
+				'password' => $password,
+                'image' => $this->upload->data("file_name"),
+                'created' => date('Y-m-d H:i:s'),
+                'createdby' => 'Ricki'
+            );
+
+            $this->GlobalModel->insert('user', $data);
+            echo "Data saved successfully";
+        }
+	}
+
+	public function updateuser($id){
+		$config['upload_path']          = './assets/images/user/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['overwrite']			= true;
+
+        $this->upload->initialize($config);
+        $this->load->library('upload', $config);
+
+        $name = $this->input->post('name');
+		$gender = $this->input->post('gender');
+		$phone = $this->input->post('phone');
+		$email = $this->input->post('email');
+		$level = $this->input->post('level');
+		$password =password_hash($this->input->post('password'), PASSWORD_DEFAULT); 
+
+        if (!empty($_FILES['image']['name'])) {
+            if (!$this->upload->do_upload('image'))
+            {
+                $error = $this->upload->display_errors();
+                echo $error;
+            }
+            else
+            {
+                $data = array(
+                    'name' => $name,
+					'gender' => $gender,
+					'phone' => $phone,
+					'email' => $email,
+					'level' => $level,
+					'password' => $password,
+                	'image' => $this->upload->data("file_name"),
+					'modified' => date('Y-m-d H:i:s'),
+					'modifiedby' => 'Ricki'
+                );
+
+                unlink(FCPATH.'assets/images/user/'.$currentImage);
+                $this->GlobalModel->update('user', $data, $id);
+                echo "Data changed successfully";
+            }
+        }else{
+            $data = array(
+				'name' => $name,
+				'gender' => $gender,
+				'phone' => $phone,
+				'email' => $email,
+				'level' => $level,
+				'password' => $password,
+				'modified' => date('Y-m-d H:i:s'),
+				'modifiedby' => 'Ricki'
+			);
+
+            $this->GlobalModel->update('user', $data, $id);
+            echo "Data changed successfully";
+        }
+	}
+
 	// Upload Delete Image Content
     function uploadimage(){
         if(isset($_FILES["image"]["name"])){

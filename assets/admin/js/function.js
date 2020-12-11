@@ -524,6 +524,140 @@ $("#submitEditBook").on('submit' , function(e) {
     return false;
 });
 
+// Insert Data News
+$("#submitNews").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+    var title=$('#title').val();
+    var content=$('#contentdesc').val();
+    var image=$('#image').val();
+    var formData = new FormData(this);
+
+    if(title == "" || image == "" || content == ""){
+        alert("Title, Cover, and Content can't be empty");
+    }else{
+        $.ajax({
+            url:"insertnews",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                clearFormNews();
+                alert(data);
+            }
+        });
+    }
+
+    return false;
+});
+
+// Update Data News
+$("#submitEditNews").on('submit' , function(e) {
+    e.preventDefault();
+
+    var title=$('#title').val();
+    var content=$('#contentdesc').val();
+    var urlAction = $('#submitEditBook').attr('action');
+
+    var formData = new FormData(this);
+
+    if(title == "" || content == ""){
+        alert("Title and Content can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/news';
+            }
+        });
+    }
+
+    return false;
+});
+
+// Insert Data User
+$("#submitUser").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+    var name=$('#name').val();
+    var phone=$('#phone').val();
+    var email=$('#email').val();
+    var image=$('#image').val();
+    var password=$('#password').val();
+    var confirmpassword=$('#confirmpassword').val();
+
+    var formData = new FormData(this);
+
+    if(name == "" || phone == "" || email == "" || image == "" || password == ""){
+        alert("Name, Phone, Email, Password, and Image can't be empty");
+    }else if(password != confirmpassword){
+        alert("Password not match with Confirmation Password");
+    }
+    else{
+        $.ajax({
+            url:"insertuser",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                clearFormUser();
+                alert(data);
+            }
+        });
+    }
+
+    return false;
+});
+
+// Update Data User
+$("#submitEditUser").on('submit' , function(e) {
+    e.preventDefault();
+
+    var name=$('#name').val();
+    var phone=$('#phone').val();
+    var email=$('#email').val();
+    var password=$('#password').val();
+
+    var urlAction = $('#submitEditBook').attr('action');
+
+    var formData = new FormData(this);
+
+    if(name == "" || phone == "" || email == "" || password == ""){
+        alert("Name, Phone, Email, Password, and Image can't be empty");
+    }else if(password != confirmpassword){
+        alert("Password not match with Confirmation Password");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/user';
+            }
+        });
+    }
+
+    return false;
+});
+
 // Clear Form Teams
 function clearFormTeams(){
     $("#name").val("");
@@ -561,4 +695,23 @@ function clearFormBook(){
     $("#author").val("");
     $("#publisher").val("");
     $("select#type")[0].selectedIndex = 0;
+}
+
+// Clear Form News
+function clearFormNews(){
+    $("#title").val("");
+    $("#contentdesc").summernote("reset");
+    $("#image").val("");
+}
+
+// Clear Form User
+function clearFormUser(){
+    $("#name").val("");
+    $("select#gender")[0].selectedIndex = 0;
+    $("#phone").val("");
+    $("#email").val("");
+    $("select#level")[0].selectedIndex = 0;
+    $("#image").val("");
+    $("#password").val("");
+    $("#confirmpassword").val("");
 }
