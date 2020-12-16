@@ -95,7 +95,7 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Media</span>
                 </a>
-                <div id="collapseOne" class="collapse <?php echo ($pageActive == 'media' ? 'show':'')?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseOne" class="collapse <?php echo ($pageActive == 'media' || $pageActive == 'news' || $pageActive == 'book' ? 'show':'')?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">List Media</h6>
                         <a class="collapse-item <?php echo ($pageActive == 'news' ? 'active':'')?>" href="<?php echo base_url()?>admin/news">News</a>
@@ -115,8 +115,8 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Team</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link <?php echo ($pageActive == 'services' ? 'active':'')?>" href="<?php echo base_url()?>admin/services">
+            <li class="nav-item <?php echo ($pageActive == 'services' ? 'active':'')?>">
+                <a class="nav-link" href="<?php echo base_url()?>admin/services">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Services</span></a>
             </li>

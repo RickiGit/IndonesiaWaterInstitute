@@ -104,26 +104,31 @@
         </div>
 
         <div class="row content">
-          <div class="col-lg-6">
-            <ul>
-              <li><i class="ri-check-double-line"></i> Water Balance Analysis & Water Security Planning</li>
-              <li><i class="ri-check-double-line"></i> Water System Efficiency</li>
-              <li><i class="ri-check-double-line"></i> Wastewater Management, Reclaim, & Reuse</li>
-              <li><i class="ri-check-double-line"></i> Water Supply Planning & Management</li>
-              <li><i class="ri-check-double-line"></i> Rainwater Harvesting Concept</li>
-              <li><i class="ri-check-double-line"></i> Groundwater Management & Conservation</li>
-              <li><i class="ri-check-double-line"></i> Integrated Water Resources Management, Technology, and Infrastructure (IWRMTI)</li>
-            </ul>
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <ul>
-              <li><i class="ri-check-double-line"></i> Water Pricing, Tariff, Finance, and Investment</li>
-              <li><i class="ri-check-double-line"></i> Integrated Urban Water Resources Management (IUWRM)</li>
-              <li><i class="ri-check-double-line"></i> Advance Technology for IWRM</li>
-              <li><i class="ri-check-double-line"></i> Membrane & Nanotechnology for Water Treatment System</li>
-            </ul>
-          </div>
-        </div>
+
+          <?php
+            $index = 0;
+            foreach($services as $s){
+              if($index % 2 == 0){
+          ?>
+                <div class="col-lg-6">
+                  <ul>
+                    <li></i> <?php echo $s['name']?></li>
+                  </ul>
+                </div>
+          <?php
+              }else{
+          ?>
+                <div class="col-lg-6">
+                  <ul>
+                    <li></i> <?php echo $s['name']?></li>
+                  </ul>
+                </div>
+          <?php
+              }
+              $index++;
+            }
+         ?>
+
 
       </div>
     </section>
@@ -198,19 +203,19 @@
               <div class="address">
                 <i class="icofont-google-map"></i>
                 <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p><?php echo $contact['address']?></p>
               </div>
 
               <div class="email">
                 <i class="icofont-envelope"></i>
                 <h4>Email:</h4>
-                <p>info@example.com</p>
+                <p><?php echo $contact['email']?></p>
               </div>
 
               <div class="phone">
                 <i class="icofont-phone"></i>
                 <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
+                <p><?php echo $contact['phone']?></p>
               </div>
 
             </div>

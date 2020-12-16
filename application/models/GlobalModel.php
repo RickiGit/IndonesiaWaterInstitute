@@ -10,6 +10,15 @@
             return $this->db->get_where($table, ["id" => $id])->row_array();
         }
 
+        public function getByName($table, $column, $id){
+            return $this->db->get_where($table, [$column => $id])->row_array();
+        }
+
+        public function getAllByColumn($table, $column, $value){
+            $query = $this->db->query("SELECT * FROM $table WHERE $column = $value");
+            return $query->result_array();
+        }
+
         public function insert($table, $data){
             $this->db->insert($table, $data);
         }

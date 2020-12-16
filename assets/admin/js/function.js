@@ -6,7 +6,7 @@ $(document).ready(function(){
         height: "150px",
         callbacks: {
             onImageUpload: function(image) {
-                uploadImageVision(image[0], "#vision");
+                uploadImage(image[0], "#vision");
             },
             onMediaDelete : function(target) {
                 deleteImage(target[0].src);
@@ -18,7 +18,7 @@ $(document).ready(function(){
         height: "150px",
         callbacks: {
             onImageUpload: function(image) {
-                uploadImageVision(image[0], "#mission");
+                uploadImage(image[0], "#mission");
             },
             onMediaDelete : function(target) {
                 deleteImage(target[0].src);
@@ -30,7 +30,7 @@ $(document).ready(function(){
         height: "150px",
         callbacks: {
             onImageUpload: function(image) {
-                uploadImageVision(image[0], "#strategy");
+                uploadImage(image[0], "#strategy");
             },
             onMediaDelete : function(target) {
                 deleteImage(target[0].src);
@@ -42,7 +42,7 @@ $(document).ready(function(){
         height: "150px",
         callbacks: {
             onImageUpload: function(image) {
-                uploadImageVision(image[0], "#history");
+                uploadImage(image[0], "#history");
             },
             onMediaDelete : function(target) {
                 deleteImage(target[0].src);
@@ -54,7 +54,8 @@ $(document).ready(function(){
         height: "180px",
         callbacks: {
             onImageUpload: function(image) {
-                uploadImageVision(image[0], "#contentdesc");
+                debugger;
+                uploadImage(image[0], "#contentdesc");
             },
             onMediaDelete : function(target) {
                 deleteImage(target[0].src);
@@ -62,11 +63,47 @@ $(document).ready(function(){
         }
     });
 
-    function uploadImageVision(image, target) {
+    $('#editcontentdesc').summernote({
+        height: "180px",
+        callbacks: {
+            onImageUpload: function(image) {
+                debugger;
+                uploadEditImage(image[0], "#editcontentdesc");
+            },
+            onMediaDelete : function(target) {
+                deleteImage(target[0].src);
+            }
+        }
+    });
+
+    function uploadImage(image, target) {
+        debugger;
         var data = new FormData();
         data.append("image", image);
         $.ajax({
             url: "uploadimage",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: data,
+            type: "POST",
+            success: function(url) {
+                $(target).summernote("insertImage", url);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    }
+
+    function uploadEditImage(image, target) {
+        debugger;
+        var baseurl=$('#baseurl').val();
+        baseurl = baseurl + "/admin/uploadimage";
+        var data = new FormData();
+        data.append("image", image);
+        $.ajax({
+            url: baseurl,
             cache: false,
             contentType: false,
             processData: false,
@@ -558,9 +595,10 @@ $("#submitNews").on('submit' , function(e) {
 $("#submitEditNews").on('submit' , function(e) {
     e.preventDefault();
 
+    debugger;
     var title=$('#title').val();
     var content=$('#contentdesc').val();
-    var urlAction = $('#submitEditBook').attr('action');
+    var urlAction = $('#submitEditNews').attr('action');
 
     var formData = new FormData(this);
 

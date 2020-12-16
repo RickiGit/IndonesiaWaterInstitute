@@ -38,9 +38,9 @@
     <div class="container d-flex align-items-center">
       <div class="contact-info mr-auto">
         <ul>
-          <li><i class="icofont-envelope"></i><a href="mailto:contact@example.com">contact@example.com</a></li>
-          <li><i class="icofont-phone"></i> +1 5589 55488 55</li>
-          <li><i class="icofont-clock-time icofont-flip-horizontal"></i> Mon-Fri 9am - 5pm</li>
+          <li><i class="icofont-envelope"></i><a href="mailto:contact@example.com"><?php echo $contact['email']?></a></li>
+          <li><i class="icofont-phone"></i><?php echo $contact['phone']?></li>
+          <!-- <li><i class="icofont-clock-time icofont-flip-horizontal"></i> Mon-Fri 9am - 5pm</li> -->
         </ul>
       </div>
       <div class="cta">
@@ -65,9 +65,9 @@
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html#header" class="scrollto">Anyar</a></h1>
+      <!-- <h1 class="logo mr-auto"><a href="index.html#header" class="scrollto">Anyar</a></h1> -->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html#header" class="logo mr-auto scrollto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <a href="index.html#header" class="logo mr-auto scrollto"><img src="<?php echo base_url()?>assets/images/background/logo2.png" alt="" class="img-fluid"></a>
 
       <?php
           $uri = $_SERVER['REQUEST_URI'];

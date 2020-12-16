@@ -328,7 +328,7 @@ class Admin extends CI_Controller {
         $this->load->library('upload', $config);
 
         $title = $this->input->post('title');
-		$content = $this->input->post('contentdesc');
+		$content = $this->input->post('editcontentdesc');
 		$isactive = $this->input->post('status');
 
         if (!empty($_FILES['image']['name'])) {
@@ -585,7 +585,8 @@ class Admin extends CI_Controller {
         $this->load->library('upload', $config);
 
         $title = $this->input->post('title');
-		$content = $this->input->post('contentdesc');
+		$content = $this->input->post('editcontentdesc');
+		$currentImage = $this->input->post('currentimage');
 
         if (!empty($_FILES['image']['name'])) {
             if (!$this->upload->do_upload('image'))

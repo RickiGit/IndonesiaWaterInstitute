@@ -11,12 +11,13 @@
                 <div class="row">
                     <div class="col col-md-12">
                         <label class="m-bottom5">Title*</label>
+                        <input type="hidden" id="baseurl" value="<?php echo base_url()?>">
                         <input type="text" name="title" id="title" class="form-control m-bottom10" value="<?php echo $news['title']?>">
                         <label class="m-bottom5">Cover</label>
                         <input type="file" name="image" id="image" class="form-control m-bottom10" accept="image/*">
                         <input type="hidden" name="currentimage" id="currentimage" value="<?php echo $news['cover']?>">
                         <label class="m-bottom5">Content*</label>
-                        <textarea name="contentdesc" id="contentdesc" class="form-control m-bottom10"></textarea>
+                        <textarea name="editcontentdesc" id="editcontentdesc" class="form-control m-bottom10"><?php echo $news['content']?></textarea>
                         <!-- <label class="m-bottom5">File</label>
                         <input type="file" name="anotherfile" id="anotherfile" class="form-control m-bottom10" accept="application/pdf"> -->
                     </div>
@@ -31,10 +32,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    window.addEventListener("load", function(){
-        debugger;
-        $('#contentdesc').summernote('code', "<?php echo str_replace("\"","'", $news['content']) ?>");
-    });
-</script>
