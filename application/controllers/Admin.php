@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+define("ENCRYPTION_KEY", "IndonesiaWaterInstitute2020!");
+define("ENCRYPTION_METHOD", "AES-128-CTR");
+define("ENCRYPTION_IV", "1234");
 
 class Admin extends CI_Controller {
 
@@ -9,6 +12,7 @@ class Admin extends CI_Controller {
         $this->load->library('upload');
 		$this->load->model("GlobalModel");
 		$this->load->model("ClientModel");
+		$this->load->model("AuthModel");
 	}
 
 	public function index()
@@ -475,7 +479,7 @@ class Admin extends CI_Controller {
 		echo "Data changed successfully";
 	}
 
-	// Client
+	// Book
 	public function book(){
 		$data['book'] = $this->GlobalModel->getAll('book');
 		$this->load->view('view_admin_book', $data);
@@ -666,30 +670,36 @@ class Admin extends CI_Controller {
 		$phone = $this->input->post('phone');
 		$email = $this->input->post('email');
 		$level = $this->input->post('level');
-		$password =password_hash($this->input->post('password'), PASSWORD_DEFAULT); 
+		$password = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
 
-        if (!$this->upload->do_upload('image'))
-        {
-            $error = $this->upload->display_errors();
-            echo $error;
-        }
-        else
-        {
-            $data = array(
-                'name' => $name,
-				'gender' => $gender,
-				'phone' => $phone,
-				'email' => $email,
-				'level' => $level,
-				'password' => $password,
-                'image' => $this->upload->data("file_name"),
-                'created' => date('Y-m-d H:i:s'),
-                'createdby' => 'Ricki'
-            );
+		$data['user'] = $this->GlobalModel->getByName('user','email', $email);
 
-            $this->GlobalModel->insert('user', $data);
-            echo "Data saved successfully";
-        }
+		if($data['user']['email'] != $email){
+			if (!$this->upload->do_upload('image'))
+			{
+				$error = $this->upload->display_errors();
+				echo $error;
+			}
+			else
+			{
+				$data = array(
+					'name' => $name,
+					'gender' => $gender,
+					'phone' => $phone,
+					'email' => $email,
+					'level' => $level,
+					'password' => $password,
+					'image' => $this->upload->data("file_name"),
+					'created' => date('Y-m-d H:i:s'),
+					'createdby' => 'Ricki'
+				);
+
+				$this->GlobalModel->insert('user', $data);
+				echo "Data saved successfully";
+			}
+		}else{
+			echo "Email already exist";
+		}
 	}
 
 	public function updateuser($id){
@@ -705,7 +715,7 @@ class Admin extends CI_Controller {
 		$phone = $this->input->post('phone');
 		$email = $this->input->post('email');
 		$level = $this->input->post('level');
-		$password =password_hash($this->input->post('password'), PASSWORD_DEFAULT); 
+		$currentImage = $this->input->post('currentImage');
 
         if (!empty($_FILES['image']['name'])) {
             if (!$this->upload->do_upload('image'))
@@ -721,13 +731,12 @@ class Admin extends CI_Controller {
 					'phone' => $phone,
 					'email' => $email,
 					'level' => $level,
-					'password' => $password,
                 	'image' => $this->upload->data("file_name"),
 					'modified' => date('Y-m-d H:i:s'),
 					'modifiedby' => 'Ricki'
                 );
 
-                unlink(FCPATH.'assets/images/user/'.$currentImage);
+                unlink(FCPATH.'assets/images/user/'. $currentImage);
                 $this->GlobalModel->update('user', $data, $id);
                 echo "Data changed successfully";
             }
@@ -746,6 +755,77 @@ class Admin extends CI_Controller {
             $this->GlobalModel->update('user', $data, $id);
             echo "Data changed successfully";
         }
+	}
+
+	public function updatepassword($id){
+		$currentpassword = $this->input->post('currentpassword');
+		$newpassword = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
+		$confirmpassword = password_hash($this->input->post('confirmpassword'), PASSWORD_BCRYPT);
+
+		$data['user'] = $this->AuthModel->getUserById($id);
+		if(password_verify($currentpassword, $data['user']['password'])){
+			$data = array(
+				'password' => $newpassword,
+				'modified' => date('Y-m-d H:i:s'),
+				'modifiedby' => 'Ricki'
+			);
+			$this->GlobalModel->update('user', $data, $id);
+			echo "1";
+		}else{
+			echo "0";
+		}
+	}
+
+	// Slide Header
+	public function slideheader(){
+		$data['slide'] = $this->GlobalModel->getAll('slideheader');
+		$this->load->view('view_admin_slideheader', $data);
+	}
+
+	public function createslideheader(){
+		$this->load->view('view_admin_slideheader_create');
+	}
+
+	public function deleteslideheader($id){
+        $data['item'] = $this->GlobalModel->getById('slideheader',$id);
+		$this->GlobalModel->delete('slideheader', $id);
+        redirect('admin/slideheader');
+	}
+
+	public function editslideheader($id){
+		$data['slide'] = $this->GlobalModel->getById('slideheader', $id);
+		$this->load->view('view_admin_slideheader_edit', $data);
+	}
+
+	public function insertslideheader(){
+		$title = $this->input->post('title');
+		$description = $this->input->post('description');
+
+        $data = array(
+			'title' => $title,
+			'description' => $description,
+			'created' => date('Y-m-d H:i:s'),
+			'createdby' => 'Ricki'
+		);
+
+		$this->GlobalModel->insert('slideheader', $data);
+		echo "Data saved successfully";
+	}
+
+	public function updateslideheader($id){
+
+		$title = $this->input->post('title');
+		$description = $this->input->post('description');
+
+        $data = array(
+			'title' => $title,
+			'description' => $description,
+			'modified' => date('Y-m-d H:i:s'),
+			'modifiedby' => 'Ricki'
+		);
+
+		$this->GlobalModel->update('slideheader', $data, $id);
+		echo "Data changed successfully";
 	}
 
 	// Upload Delete Image Content

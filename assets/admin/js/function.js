@@ -662,22 +662,22 @@ $("#submitUser").on('submit' , function(e) {
 
 // Update Data User
 $("#submitEditUser").on('submit' , function(e) {
+    
     e.preventDefault();
 
+    var id=$('#id').val();
     var name=$('#name').val();
     var phone=$('#phone').val();
     var email=$('#email').val();
-    var password=$('#password').val();
 
-    var urlAction = $('#submitEditBook').attr('action');
+    var urlAction = $('#submitEditUser').attr('action');
 
     var formData = new FormData(this);
 
-    if(name == "" || phone == "" || email == "" || password == ""){
-        alert("Name, Phone, Email, Password, and Image can't be empty");
-    }else if(password != confirmpassword){
-        alert("Password not match with Confirmation Password");
+    if(name == "" || phone == "" || email == ""){
+        alert("Name, Phone, and Email can't be empty");
     }else{
+        debugger;
         $.ajax({
             url:urlAction,
             type: "POST",
@@ -695,6 +695,117 @@ $("#submitEditUser").on('submit' , function(e) {
 
     return false;
 });
+
+// Update Data Password User
+$("#submitEditUserPassword").on('submit' , function(e) {
+    
+    e.preventDefault();
+
+    var currentpass=$('#currentpassword').val();
+    var newpass=$('#password').val();
+    var confirmpass=$('#confirmpassword').val();
+
+    var urlAction = $('#submitEditUserPassword').attr('action');
+
+    var formData = new FormData(this);
+
+    if(currentpass == "" || newpass == "" || confirmpass == ""){
+        alert("Current Password, New Password and Confirmation Password can't be empty");
+    }else if(newpass != confirmpass){
+        alert("New Password and Confirmation Password is not match");
+    }
+    else{
+        debugger;
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                if(data == "0"){
+                    alert("Current Password is Wrong");
+                }else{
+                    alert("Data saved successfully");
+                    window.location = baseUrl + '/admin/user';
+                }
+                
+            }
+        });
+    }
+
+    return false;
+});
+
+// Insert Data Slide Header
+$("#submitSlideHeader").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+    var title=$('#title').val();
+    var description=$('#description').val();
+
+    var formData = new FormData(this);
+
+    if(title == "" || description == ""){
+        alert("Title and Description can't be empty");
+    }
+    else{
+        $.ajax({
+            url:"insertslideheader",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                clearFormSlide();
+                alert(data);
+            }
+        });
+    }
+
+    return false;
+});
+
+// Update Data Slide Header
+$("#submitEditSlideHeader").on('submit' , function(e) {
+    
+    e.preventDefault();
+
+    var title=$('#title').val();
+    var description=$('#description').val();
+
+    var urlAction = $('#submitEditSlideHeader').attr('action');
+
+    var formData = new FormData(this);
+
+    if(title == "" || description == ""){
+        alert("Title and Description can't be empty");
+    }
+    else
+    {
+        debugger;
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/slideheader';
+            }
+        });
+    }
+
+    return false;
+});
+
 
 // Clear Form Teams
 function clearFormTeams(){
@@ -752,4 +863,9 @@ function clearFormUser(){
     $("#image").val("");
     $("#password").val("");
     $("#confirmpassword").val("");
+}
+
+function clearFormSlide(){
+    $("#title").val("");
+    $("#description").val("");
 }

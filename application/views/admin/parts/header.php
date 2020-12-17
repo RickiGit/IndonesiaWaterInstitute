@@ -61,8 +61,8 @@
             <div class="sidebar-heading">
                 Interface
             </div>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item <?php echo ($pageActive == 'slideheader' ? 'active':'')?>">
+                <a class="nav-link" href="<?php echo base_url()?>admin/slideheader">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Slide Home</span></a>
             </li>
