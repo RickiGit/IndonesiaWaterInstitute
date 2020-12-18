@@ -61,10 +61,19 @@
             <div class="sidebar-heading">
                 Interface
             </div>
-            <li class="nav-item <?php echo ($pageActive == 'slideheader' ? 'active':'')?>">
-                <a class="nav-link" href="<?php echo base_url()?>admin/slideheader">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Slide Home</span></a>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHome"
+                    aria-expanded="true" aria-controls="collapseHome">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Home</span>
+                </a>
+                <div id="collapseHome" class="collapse <?php echo ($pageActive == 'slideheader' || $pageActive == 'homecontent' || $pageActive == 'columnheader' ? 'show':'')?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Home Page Content</h6>
+                        <a class="collapse-item <?php echo ($pageActive == 'slideheader' ? 'active':'')?>" href="<?php echo base_url()?>admin/slideheader">Slide Header</a>
+                        <a class="collapse-item <?php echo ($pageActive == 'homecontent' ? 'active':'')?>" href="<?php echo base_url()?>admin/homecontent">Home Content</a>
+                    </div>
+                </div>
             </li>
             <li class="nav-item <?php echo ($pageActive == 'about' ? 'active':'')?>">
                 <a class="nav-link" href="<?php echo base_url()?>admin/about">
@@ -176,6 +185,25 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bahasa</span>
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    English
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Bahasa
+                                </a>
+                            </div>
+                        </li>
+
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="<?php echo base_url()?>admin/inbox" role="button">
                                 <i class="fas fa-envelope fa-fw"></i>

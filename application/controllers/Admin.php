@@ -828,6 +828,76 @@ class Admin extends CI_Controller {
 		echo "Data changed successfully";
 	}
 
+	// Home Content
+	public function homecontent(){
+		$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
+		$this->load->view('view_admin_home_content_edit', $data);
+	}
+
+	public function updatehomecontent($id){
+
+		$config['upload_path']          = './assets/images/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['overwrite']			= true;
+
+        $this->upload->initialize($config);
+        $this->load->library('upload', $config);
+
+        $about = $this->input->post('descabout');
+		$services = $this->input->post('descservices');
+		$project = $this->input->post('descproject');
+		$teams = $this->input->post('descteams');
+		$name = $this->input->post('name');
+		$position = $this->input->post('position');
+		$aboutlead = $this->input->post('desclead');
+        $currentimage = $this->input->post('currentimage');
+
+        if (!empty($_FILES['image']['name'])) {
+            if (!$this->upload->do_upload('image'))
+            {
+                $error = $this->upload->display_errors();
+                echo $error;
+            }
+            else
+            {
+                $data = array(
+                    'about' => $about,
+					'services' => $services,
+					'project' => $project,
+					'teams' => $teams,
+					'name' => $name,
+					'position' => $position,
+					'aboutlead' => $aboutlead,
+					'image' => $this->upload->data("file_name"),
+					'modified' => date('Y-m-d H:i:s'),
+					'modifiedby' => 'Ricki'
+                );
+
+                if($currentimage != null || $currentimage != ""){
+					unlink(FCPATH.'assets/images/'.$currentimage);
+				}
+
+                $this->GlobalModel->update('homecontent', $data, $id);
+                echo "Data changed successfully";
+            }
+        }else{
+            $data = array(
+				'about' => $about,
+				'services' => $services,
+				'project' => $project,
+				'teams' => $teams,
+				'name' => $name,
+				'position' => $position,
+				'aboutlead' => $aboutlead,
+				'modified' => date('Y-m-d H:i:s'),
+				'modifiedby' => 'Ricki'
+			);
+
+            $this->GlobalModel->update('homecontent', $data, $id);
+            echo "Data changed successfully";
+        }
+	}
+
 	// Upload Delete Image Content
     function uploadimage(){
         if(isset($_FILES["image"]["name"])){

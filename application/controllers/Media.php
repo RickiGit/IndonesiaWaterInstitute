@@ -11,17 +11,20 @@ class Media extends CI_Controller {
 
 	public function index()
 	{
+		$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
 		$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
 		$this->load->view('view_public_media', $data);
 	}
 
 	public function book(){
+		$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
 		$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
 		$data['books'] = $this->GlobalModel->getAllByColumn('book', 'type', '1');
 		$this->load->view('view_public_media_book', $data);
 	}
 
 	public function journal(){
+		$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
 		$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
 		$data['books'] = $this->GlobalModel->getAllByColumn('book', 'type', '2');
 		$this->load->view('view_public_media_journal', $data);

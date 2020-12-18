@@ -67,7 +67,7 @@
 
       <!-- <h1 class="logo mr-auto"><a href="index.html#header" class="scrollto">Anyar</a></h1> -->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html#header" class="logo mr-auto scrollto"><img src="<?php echo base_url()?>assets/images/background/logo2.png" alt="" class="img-fluid"></a>
+      <a href="<?php echo base_url()?>home" class="logo mr-auto scrollto"><img src="<?php echo base_url()?>assets/images/background/logo2.png" alt="" class="img-fluid"></a>
 
       <?php
           $uri = $_SERVER['REQUEST_URI'];
@@ -81,7 +81,7 @@
           <li class="<?php echo ($pageActive == 'about' ? 'active':'')?>"><a href="<?php echo base_url()?>about"><?php echo $this->lang->line('about') ?></a></li>
           <li class="<?php echo ($pageActive == 'client' ? 'active':'')?>"><a href="<?php echo base_url()?>client"><?php echo $this->lang->line('client') ?></a></li>
           <li class="<?php echo ($pageActive == 'project' ? 'active':'')?>"><a href="<?php echo base_url()?>project"><?php echo $this->lang->line('project') ?></a></li>
-          <li class="<?php echo ($pageActive == 'media' ? 'active':'')?>"><a href="<?php echo base_url()?>media"><?php echo $this->lang->line('media') ?></a></li>
+          <li class="<?php echo ($pageActive == 'media' || $pageActive == 'book' || $pageActive == 'journal' ? 'active':'')?>"><a href="<?php echo base_url()?>media"><?php echo $this->lang->line('media') ?></a></li>
           <li class="<?php echo ($pageActive == 'contact' ? 'active':'')?>"><a href="<?php echo base_url()?>contact"><?php echo $this->lang->line('contact') ?></a></li>
 
         </ul>

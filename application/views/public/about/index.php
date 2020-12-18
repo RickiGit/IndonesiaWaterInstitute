@@ -6,10 +6,10 @@
       <div class="container">
 
         <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>About</li>
+          <li><a href="<?php echo base_url()?>home">Home</a></li>
+          <li><?php echo $this->lang->line('about') ?></li>
         </ol>
-        <h2>About</h2>
+        <h2><?php echo $this->lang->line('about') ?></h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -21,7 +21,7 @@
         <div class="faq-list">
         <ul>
             <li data-aos="fade-up" data-aos="fade-up" data-aos-delay="100">
-            <a data-toggle="collapse" class="collapse" href="#faq-list-1">Visi <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <a data-toggle="collapse" class="collapse" href="#faq-list-1"><?php echo $this->lang->line('vision') ?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
             <div id="faq-list-1" class="collapse show" data-parent=".faq-list">
                 <p>
                 <?php echo $about['vision']?>
@@ -30,7 +30,7 @@
             </li>
 
             <li data-aos="fade-up" data-aos-delay="200">
-            <a data-toggle="collapse" href="#faq-list-2" class="collapsed">Misi <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <a data-toggle="collapse" href="#faq-list-2" class="collapsed"><?php echo $this->lang->line('mission') ?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
             <div id="faq-list-2" class="collapse" data-parent=".faq-list">
                 <p>
                 <?php echo $about['mission']?>
@@ -39,7 +39,7 @@
             </li>
 
             <li data-aos="fade-up" data-aos-delay="300">
-           <a data-toggle="collapse" href="#faq-list-3" class="collapsed">Sejarah <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+           <a data-toggle="collapse" href="#faq-list-3" class="collapsed"><?php echo $this->lang->line('history') ?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
             <div id="faq-list-3" class="collapse" data-parent=".faq-list">
                 <p>
                 <?php echo $about['history']?>
@@ -48,7 +48,7 @@
             </li>
 
             <li data-aos="fade-up" data-aos-delay="400">
-            <a data-toggle="collapse" href="#faq-list-4" class="collapsed">Strategi <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <a data-toggle="collapse" href="#faq-list-4" class="collapsed"><?php echo $this->lang->line('strategy') ?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
             <div id="faq-list-4" class="collapse" data-parent=".faq-list">
                 <p>
                 <?php echo $about['strategy']?>
@@ -68,7 +68,7 @@
 
         <div class="section-title">
           <h2>Team</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p><?php echo $home['teams']?></p>
         </div>
 
         <div class="row">

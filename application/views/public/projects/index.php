@@ -5,11 +5,11 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
 
-        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Project</li>
-        </ol>
-        <h2>Project</h2>
+      <ol>
+        <li><a href="<?php echo base_url()?>home">Home</a></li>
+        <li><?php echo $this->lang->line('project') ?></li>
+      </ol>
+      <h2><?php echo $this->lang->line('project') ?></h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -31,7 +31,7 @@
                 </div>
 
                 <h2 class="entry-title">
-                  <a href="blog-single.html"><?php echo $p->title?></a>
+                  <a href="<?php echo base_url()?>project/detail/<?php echo rawurlencode($p->title)?>"><?php echo $p->title?></a>
                 </h2>
 
                 <div class="entry-meta">

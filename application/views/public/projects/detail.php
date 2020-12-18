@@ -5,9 +5,9 @@
     <div class="container">
 
         <ol>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="blog.html">Project</a></li>
-        </ol>
+        <li><a href="<?php echo base_url()?>home">Home</a></li>
+        <li><?php echo $this->lang->line('project') ?></li>
+      </ol>
         <h2><?php echo $project['title']?></h2>
 
     </div>
@@ -44,9 +44,9 @@
 
             <div class="entry-footer clearfix">
                 <div class="float-right share">
-                    <a href="" title="Share on Twitter"><i class="icofont-twitter"></i></a>
-                    <a href="<?php echo 'http://www.facebook.com/sharer/sharer.php?href='.base_url()?>/project/detail/<?php echo rawurlencode($project['title'])?>" title="Share on Facebook"><i class="icofont-facebook"></i></a>
-                    <a href="" title="Share on Instagram"><i class="icofont-instagram"></i></a>
+                    <a href="http://twitter.com/share?url=<?php echo base_url()?>project/detail/<?php echo rawurlencode($project['title'])?>" target="_blank" title="Share on Twitter"><i class="icofont-twitter"></i></a>
+                    <a href="http://www.facebook.com/sharer.php?href=<?php echo base_url()?>project/detail/<?php echo rawurlencode($project['title'])?>" target="_blank" title="Share on Facebook"><i class="icofont-facebook"></i></a>
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url()?>project/detail/<?php echo rawurlencode($project['title'])?>" target="_blank" title="Share on Linkedin"><i class="icofont-linkedin"></i></a>
                 </div>
             </div>
 

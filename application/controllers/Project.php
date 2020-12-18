@@ -48,6 +48,7 @@ class Project extends CI_Controller {
 		$$page = $this->uri->segment(3);
 		$this->pagination->initialize($config);		
 
+		$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
 		$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
 		$data['project'] = $this->ProjectModel->getProject($config['per_page'], $page);
 		$this->load->view('view_public_project', $data);
@@ -90,6 +91,7 @@ class Project extends CI_Controller {
 
 		$$page = $this->uri->segment(3);
 		$this->pagination->initialize($config);		
+		$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
 		$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
 		$data['project'] = $this->ProjectModel->getProject($config['per_page'], $page);
 		$this->load->view('view_public_project', $data);
@@ -98,6 +100,7 @@ class Project extends CI_Controller {
 	public function detail($title){
 		$data['recent'] = $this->ProjectModel->get10RecentProject();
 		$data['project'] = $this->GlobalModel->getByName('projects', 'title', rawurldecode($title));
+		$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
 		$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
 		$this->load->view('view_public_project_detail', $data);
 	}

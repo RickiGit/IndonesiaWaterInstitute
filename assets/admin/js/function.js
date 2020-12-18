@@ -807,6 +807,47 @@ $("#submitEditSlideHeader").on('submit' , function(e) {
 });
 
 
+// Update Data Home Content
+$("#submitEditHomeContent").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+
+    var id=$('#id').val();
+    var descabout=$('#descabout').val();
+    var descservices=$('#descservices').val();
+    var descproject=$('#descproject').val();
+    var descteams=$('#descteams').val();
+    var name=$('#name').val();
+    var position=$('#position').val();
+    var desclead=$('#desclead').val();
+
+    var urlAction = $('#submitEditHomeContent').attr('action');
+
+    var formData = new FormData(this);
+
+    if(descabout == "" || descservices == "" || descproject == "" || descteams == "" || name == "" || position == "" || desclead == ""){
+        alert("Desc About, Desc Services, Desc Project, Desc Teams, Lead Name, Lead Position, and Desc Lead can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/homecontent';
+            }
+        });
+    }
+
+    return false;
+});
+
+
+
 // Clear Form Teams
 function clearFormTeams(){
     $("#name").val("");

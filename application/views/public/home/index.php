@@ -2,32 +2,21 @@
 <section id="hero" class="d-flex justify-cntent-center align-items-center">
     <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
 
-      <!-- Slide 1 -->
-      <div class="carousel-item active">
-        <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Anyar</span></h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+      <?php
+        $index = 0;
+        foreach($slide as $s){
+      ?>
+        <div class="carousel-item <?php echo ($index == 0) ? 'active':''?>">
+          <div class="carousel-container">
+            <h2 class="animate__animated animate__fadeInDown"><?php echo $s['title']?></h2>
+            <p class="animate__animated animate__fadeInUp"><?php echo $s['description']?></p>
+            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+          </div>
         </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="carousel-item">
-        <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Kami berkomitmen perbaiki sumber daya air di Indonesia.</h2>
-          <p class="animate__animated animate__fadeInUp">Indonesia Water Institute (IWI) adalah bentuk integritas, keilmuan, serta tanggung jawab para ahli keairan di Indonesia terhadap lingkungan dan masa depan peradaban karena buruknya tata kelola dan sumber daya air</p>
-          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="carousel-item">
-        <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-        </div>
-      </div>
+      <?php
+          $index++;
+        }
+      ?>
 
       <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
@@ -87,9 +76,9 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Tentang IWI</h2>
-          <p>IWI adalah lembaga konsultasi sumber daya air di Indonesia. Mulai diinisiasi tahun 2007, IWI adalah lembaga konsultasi yang fokus pada pengkajian, inovasi, kebijakan, perencanaan, serta pengembangan sumber daya air dan lingkungan</p>
-          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+          <h2><?php echo $this->lang->line('aboutiwi') ?></h2>
+          <p><?php echo $home['about']?></p>
+          <a href="<?php echo base_url()?>about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
         </div>
 
       </div>
@@ -99,8 +88,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2 style="color:white">Pelayanan</h2>
-          <p>Kami memiliki keahlian serta pengalaman di bidang air dan lingkungan</p>
+          <h2 style="color:white"><?php echo $this->lang->line('service') ?></h2>
+          <p><?php echo $home['services']?></p>
         </div>
 
         <div class="row content">
@@ -139,8 +128,8 @@
       <div class="container" data-aos="zoom-in">
 
         <div class="section-title">
-          <h2>Proyek</h2>
-          <p>Selalu dilandasi oleh tiga hal: mengkaji secara sistematis masalah-masalah yang terkait, membangun jembatan komunikasi dengan para pemangku kepentingan, dan berkomitmen untuk terus memperkuat serta meningkatkan kapasitas pemangku kepentingan SDA di Indonesia.</p>
+          <h2><?php echo $this->lang->line('project') ?></h2>
+          <p><?php echo $home['project']?></p>
         </div>
 
         <div class="owl-carousel clients-carousel">
@@ -163,22 +152,16 @@
 
         <div class="row">
 
-          <div class="col-lg-5 align-items-stretch video-box" style='background-image: url("assets/img/why-us.jpg");' data-aos="fade-right">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+          <div class="col-lg-5 align-items-stretch video-box" style='background-image: url("<?php echo base_url()?>assets/images/<?php echo $home['image']?>");' data-aos="fade-right">
           </div>
 
           <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch" data-aos="fade-left">
 
             <div class="content">
-              <h3><strong>Pimpinan</strong></h3>
-              <h4><strong>Ir.Firdaus Ali, MSc, PhD.</strong></h4>
-              <p>
-                Pendiri dan Pimpinan Indonesia Water Institute
-              </p>
-              <p>
-              Beliau berkiprah sebagai pendidik dan peneliti pada Program Studi Teknik Lingkungan Fakultas Teknik Universitas Indonesia (1988-sekarang). Saat ini beliau juga menjabat sebagai Staf Khusus Menteri Pekerjaan Umum dan Perumahan Rakyat bidang Sumber Daya Air (2015-2019 & 2019-2024), serta menjabat sebagai Wakil Presiden Dewan Air Asia (Vice President of Asia Water Council) 2016-2020.
-              </p>
-              <p>Specialty: </br> Environmental Engineering</p>
+              <h3><strong><?php echo $this->lang->line('leader') ?></strong></h3>
+              <h4><strong><?php echo $home['name']?></strong></h4>
+              <p><?php echo $home['position']?></p>
+              <p><?php echo $home['aboutlead']?></p>
             </div>
 
           </div>
@@ -193,7 +176,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Contact Us</h2>
+          <h2><?php echo $this->lang->line('contactus') ?></h2>
         </div>
 
         <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">

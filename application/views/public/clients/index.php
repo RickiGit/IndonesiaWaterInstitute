@@ -5,10 +5,10 @@
       <div class="container">
 
         <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Partner & Client</li>
+          <li><a href="<?php echo base_url()?>home">Home</a></li>
+          <li><?php echo $this->lang->line('client') ?></li>
         </ol>
-        <h2>Partner & Client</h2>
+        <h2><?php echo $this->lang->line('client') ?></h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
