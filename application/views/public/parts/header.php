@@ -11,7 +11,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?php echo base_url()?>assets/public/img/favicon.png" rel="icon">
+  <link href="<?php echo base_url()?>assets/images/background/logoonly.png" rel="icon">
   <link href="<?php echo base_url()?>assets/public/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -46,7 +46,7 @@
       <div class="cta">
         <?php
           $language = $this->session->userdata('site_lang');
-          if($language == "english"){
+          if($language == "english" || $language == ""){
         ?>
           <a href="<?php echo base_url()?>home/switchLang/indonesia">Bahasa</a>
         <?php
@@ -56,7 +56,6 @@
         <?php
           }
         ?>
-        
       </div>
     </div>
   </div>
@@ -81,7 +80,7 @@
           <li class="<?php echo ($pageActive == 'about' ? 'active':'')?>"><a href="<?php echo base_url()?>about"><?php echo $this->lang->line('about') ?></a></li>
           <li class="<?php echo ($pageActive == 'client' ? 'active':'')?>"><a href="<?php echo base_url()?>client"><?php echo $this->lang->line('client') ?></a></li>
           <li class="<?php echo ($pageActive == 'project' ? 'active':'')?>"><a href="<?php echo base_url()?>project"><?php echo $this->lang->line('project') ?></a></li>
-          <li class="<?php echo ($pageActive == 'media' || $pageActive == 'book' || $pageActive == 'journal' ? 'active':'')?>"><a href="<?php echo base_url()?>media"><?php echo $this->lang->line('media') ?></a></li>
+          <li class="<?php echo ($pageActive == 'news' || $pageActive == 'book' || $pageActive == 'journal' ? 'active':'')?>"><a href="<?php echo base_url()?>media/news"><?php echo $this->lang->line('media') ?></a></li>
           <li class="<?php echo ($pageActive == 'contact' ? 'active':'')?>"><a href="<?php echo base_url()?>contact"><?php echo $this->lang->line('contact') ?></a></li>
 
         </ul>

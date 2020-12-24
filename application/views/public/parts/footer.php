@@ -6,31 +6,31 @@
         <div class="row">
 
           <div class="col-lg-4 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4><?php echo $this->lang->line('usefullinks') ?></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Partner & Client</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Project</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Media</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact Us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo base_url()?>home"><?php echo $this->lang->line('home') ?></a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo base_url()?>about"><?php echo $this->lang->line('about') ?></a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo base_url()?>client"><?php echo $this->lang->line('client') ?></a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo base_url()?>project"><?php echo $this->lang->line('project') ?></a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo base_url()?>media/news"><?php echo $this->lang->line('media') ?></a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo base_url()?>contact"><?php echo $this->lang->line('contact') ?></a></li>
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
+            <h4><?php echo $this->lang->line('contactfooter') ?></h4>
             <p>
               <?php echo $contact['address']?>
               <br>
               <br>
-              <strong>Phone:</strong> <?php echo $contact['phone']?><br>
-              <strong>Email:</strong> <?php echo $contact['email']?><br>
+              <strong><?php echo $this->lang->line('phone') ?>:</strong> <?php echo $contact['phone']?><br>
+              <strong><?php echo $this->lang->line('email') ?>:</strong> <?php echo $contact['email']?><br>
             </p>
 
           </div>
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <h3>About IWI</h3>
+            <h3><?php echo $this->lang->line('aboutfooter') ?></h3>
             <p>
               <?php 
                 $content = $home['about'];
@@ -57,9 +57,9 @@
       <div class="copyright">
         &copy; Copyright <strong><span>Indonesia Water Institute</span></strong>. All Rights Reserved
       </div>
-      <div class="credits">
+      <!-- <div class="credits">
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      </div> -->
     </div>
   </footer><!-- End Footer -->
 
@@ -78,6 +78,7 @@
 
   <!-- Template Main JS File -->
   <script src="<?php echo base_url()?>assets/public/js/main.js"></script>
+  <script src="<?php echo base_url()?>assets/public/js/function.js"></script>
 
 </body>
 

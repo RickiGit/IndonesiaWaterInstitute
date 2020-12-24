@@ -14,6 +14,7 @@
                         <tr>
                             <th>Title</th>
                             <th>Description</th>
+                            <th>Language</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -24,6 +25,7 @@
                             <tr>
                                 <td><?php echo $s['title']?></td>
                                 <td><?php echo $s['description']?></td>
+                                <td><?php echo ($s['language'] == 0) ? 'Indonesia':'English'?></td>
                                 <td>
                                     <a href="<?php echo base_url()?>admin/deleteslideheader/<?php echo $s['id']?>" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')">Delete</a>
                                     <a href="<?php echo base_url()?>admin/editslideheader/<?php echo $s['id']?>" class="btn btn-info">Edit</a>

@@ -20,23 +20,23 @@
         <div class="faq-list">
         <ul>
             <?php
-              $counter = 1;
+              $indexCollapse = 0;
               foreach($country as $c){
             ?>
               <li data-aos="fade-up" data-aos="fade-up" data-aos-delay="100">
-              <a data-toggle="collapse" class="collapse" href="<?php echo '#faq-list-'.$counter?>"><?php echo $c['name']?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="<?php echo "faq-list-".$counter?>" class="collapse" data-parent=".faq-list">
+              <a data-toggle="collapse" class="collapse" href="<?php echo '#faq-list-'.$indexCollapse?>"><?php echo $c['name']?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="<?php echo "faq-list-".$indexCollapse?>" class="collapse" data-parent=".faq-list">
                   <table class="table table-striped" style="margin-top:20px">
                     <thead>
-                      <tr><td>No</td><td>Client Name</td></td>
+                      <tr><td>No</td><td>Logo</td><td>Client Name</td></td>
                     </thead>
                     <tbody>
                       <?php
+                        $counter = 1;
                         foreach($client as $i){
                           if($i['country'] == $c['name']){
-                            echo "<tr><td>".$counter."</td><td>".$i['name']."</td></tr>";
-                          }else{
-                            $counter = 1;
+                            echo "<tr><td>".$counter."</td><td><img src='".base_url()?>assets/images/clients/<?php echo $i['image']."' style='height:40px;'></td><td>".$i['name']."</td></tr>";
+                            $counter++;
                           }
                         }
                       ?>
@@ -45,7 +45,7 @@
               </div>
               </li>
             <?php
-                $counter++;
+                $indexCollapse++;
               }
             ?>
         </ul>

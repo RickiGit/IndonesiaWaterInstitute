@@ -14,6 +14,7 @@
                         <tr>
                             <th>Title</th>
                             <th>Total View</th>
+                            <th>Language</th>
                             <th>Created By</th>
                             <th>Created</th>
                             <th>Status</th>
@@ -27,6 +28,7 @@
                             <tr>
                                 <td><?php echo $p['title']?></td>
                                 <td><?php echo $p['totalview']?></td>
+                                <td><?php echo ($p['language'] == 0) ? 'Indonesia':'English' ?></td>
                                 <td><?php echo $p['createdby']?></td>
                                 <td><?php echo date("j F Y", strtotime($p['created']))?></td>
                                 <?php

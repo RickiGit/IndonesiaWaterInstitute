@@ -18,7 +18,7 @@
   <div class="container" data-aos="fade-up">   
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url()?>media">News</a>
+            <a class="nav-link" href="<?php echo base_url()?>media/news">News</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="<?php echo base_url()?>media/book">Books</a>

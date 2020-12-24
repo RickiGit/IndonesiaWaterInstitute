@@ -18,6 +18,11 @@
                         <input type="hidden" name="currentimage" id="currentimage" value="<?php echo $project['title']?>">
                         <label class="m-bottom5">Content*</label>
                         <textarea name="editcontentdesc" id="editcontentdesc" class="form-control m-bottom10"><?php echo $project['content']?></textarea>
+                        <label class="m-bottom5">Language*</label>
+                        <select class="form-control m-bottom10" name="language" id="language">
+                            <option value="0" <?php echo ($project['language'] == 0) ? 'selected':''?>>Indonesia</option>
+                            <option value="1" <?php echo ($project['language'] == 1) ? 'selected':''?>>English</option>
+                        </select>
                         <label class="m-bottom5">Status*</label>
                         <select class="form-control m-bottom10" name="status" id="status">
                             <option value="1" <?php echo ($project['isactive'] == 1) ? "selected" : ""?>>Active</option>

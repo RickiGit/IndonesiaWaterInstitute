@@ -27,13 +27,9 @@
               <article class="entry">
 
                 <div class="entry-img">
-                  <img src="<?php echo base_url()?>assets/images/projectcover/<?php echo $p->cover?>" alt="" class="img-fluid">
+                  <img src="<?php echo base_url()?>assets/images/projectcover/<?php echo $p->cover?>" style="height:190px" alt="" class="img-fluid">
                 </div>
-
-                <h2 class="entry-title">
-                  <a href="<?php echo base_url()?>project/detail/<?php echo rawurlencode($p->title)?>"><?php echo $p->title?></a>
-                </h2>
-
+                
                 <div class="entry-meta">
                   <ul>
                     <li class="d-flex align-items-center"><i class="icofont-user"></i><?php echo $p->createdby?></li>
@@ -41,20 +37,24 @@
                   </ul>
                 </div>
 
+                <h2 class="entry-title">
+                  <a href="<?php echo base_url()?>project/detail/<?php echo rawurlencode($p->title)?>"><?php echo $p->title?></a>
+                </h2>
+
                 <div class="entry-content">
-                  <p>
+                  <!-- <p>
                     <?php 
                       $content = $p->content;
-                      if(strlen($content) > 150){
-                        $content = substr($content, 0, 350);
+                      if(strlen($content) > 300){
+                        $content = substr($content, 0, 300);
                         $content .= "...";
                       }
 
                       echo $content;
                     ?>
-                  </p>
+                  </p> -->
                   <div class="read-more">
-                    <a href="<?php echo base_url()?>project/detail/<?php echo rawurlencode($p->title)?>">Read More</a>
+                    <a href="<?php echo base_url()?>project/detail/<?php echo rawurlencode($p->title)?>"><?php echo $this->lang->line('readmore') ?></a>
                   </div>
                 </div>
 

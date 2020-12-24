@@ -4,7 +4,11 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Edit About</h6>
+        <h6 class="m-0 font-weight-bold text-primary" style="float:left">Edit About</h6>
+            <select class="form-control" style="width:200px; float:right" id="selectLanguage">
+                <option value="<?php echo base_url()?>admin/about_id" <?php echo ($about['id'] == "IWIHO001") ? 'selected':''?>>Indonesia</option>
+                <option value="<?php echo base_url()?>admin/about_en" <?php echo ($about['id'] == "IWIHO002") ? 'selected':''?>>English</option>
+            </select>
         </div>
         <div class="card-body">
             <form enctype="multipart/form-data" id="submitEditAbout" action="<?php echo base_url()?>admin/updateabout/<?php echo $about['id']?>">

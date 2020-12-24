@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>IWI - Admin</title>
+    <link href="<?php echo base_url()?>assets/images/background/logoonly.png" rel="icon">
     <!-- Custom fonts for this template -->
     <link href="<?php echo base_url()?>assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -51,11 +52,11 @@
             ?>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
-            </li>
+            </li> -->
             <!-- Nav Item - Dashboard -->
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -67,16 +68,16 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Home</span>
                 </a>
-                <div id="collapseHome" class="collapse <?php echo ($pageActive == 'slideheader' || $pageActive == 'homecontent' || $pageActive == 'columnheader' ? 'show':'')?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseHome" class="collapse <?php echo ($pageActive == 'slideheader' || $pageActive == 'homecontent_id' || $pageActive == 'homecontent_en' || $pageActive == 'columnheader' ? 'show':'')?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Home Page Content</h6>
                         <a class="collapse-item <?php echo ($pageActive == 'slideheader' ? 'active':'')?>" href="<?php echo base_url()?>admin/slideheader">Slide Header</a>
-                        <a class="collapse-item <?php echo ($pageActive == 'homecontent' ? 'active':'')?>" href="<?php echo base_url()?>admin/homecontent">Home Content</a>
+                        <a class="collapse-item <?php echo ($pageActive == 'homecontent_id' || $pageActive == 'homecontent_en' ? 'active':'')?>" href="<?php echo base_url()?>admin/homecontent_id">Home Content</a>
                     </div>
                 </div>
             </li>
-            <li class="nav-item <?php echo ($pageActive == 'about' ? 'active':'')?>">
-                <a class="nav-link" href="<?php echo base_url()?>admin/about">
+            <li class="nav-item <?php echo ($pageActive == 'about_id' || $pageActive == 'about_en' ? 'active':'')?>">
+                <a class="nav-link" href="<?php echo base_url()?>admin/about_id">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>About</span></a>
             </li>
@@ -185,13 +186,13 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow">
+                        <!-- <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bahasa</span>
-                            </a>
+                            </a> -->
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -202,13 +203,20 @@
                                     Bahasa
                                 </a>
                             </div>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="<?php echo base_url()?>admin/inbox" role="button">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
+                                <?php
+                                    if($total->total > 0){
+                                ?>
+                                    <span class="badge badge-danger badge-counter"><?php echo $total->total?></span>
+                                <?php
+                                    }
+                                ?>
+                                
                             </a>
                         </li>
 
@@ -218,9 +226,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php $this->session->userdata('email'); ?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="">
+                                    src="<?php echo base_url()?>assets/images/user/<?php echo $this->session->userdata('image');?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -229,24 +237,14 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="<?php echo base_url()?>admin/logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 

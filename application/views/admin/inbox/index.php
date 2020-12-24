@@ -15,7 +15,6 @@
                             <th>Email</th>
                             <th>Subject</th>
                             <th>Message</th>
-                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -28,29 +27,12 @@
                                 <td><?php echo $i['email']?></td>
                                 <td><?php echo $i['subject']?></td>
                                 <td><?php echo $i['message']?></td>
-                                <?php
-                                        if($i['isread'] == 0){
-                                    ?>  
-                                        <td>Unread</td>
-                                    <?php
-                                        }else{
-                                    ?>
-                                        <td></td>
-                                    <?php 
-                                        }
-                                    ?>
                                 <td>
                                     <!-- <a href="<?php echo base_url()?>admin/deleteProject/<?php echo $i['id']?>" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')">Delete</a> -->
-                                    <a href="<?php echo base_url()?>admin/editProject/<?php echo $i['id']?>" class="btn btn-info">Reply</a>
+                                    <!-- <a href="<?php echo base_url()?>admin/editProject/<?php echo $i['id']?>" class="btn btn-info">Reply</a> -->
                                     <?php
-                                        if($i['isactive'] == 0){
-                                    ?>  
-                                        <a href='<?php echo base_url()?>admin/updatestatusproject/<?php echo $i['id']?>/1' class='btn btn-success' onclick="return confirm('Are you sure want to publish?')">Read</a>
-                                    <?php
-                                        }else{
-                                    ?>
-                                            <a href='<?php echo base_url()?>admin/updatestatusproject/<?php echo $p['id']?>/0' class='btn btn-warning' onclick="return confirm('Are you sure want to deactive?')">Unread</a>
-                                    <?php 
+                                        if($i['isread'] == 0){
+                                            echo "<a href='".base_url()?>admin/updateinbox/<?php echo $i['id']."' class='btn btn-success'>Read</a>";
                                         }
                                     ?>
                                 </td>

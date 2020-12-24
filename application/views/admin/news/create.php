@@ -16,6 +16,11 @@
                         <input type="file" name="image" id="image" class="form-control m-bottom10" accept="image/*">
                         <label class="m-bottom5">Content*</label>
                         <textarea name="contentdesc" id="contentdesc" class="form-control m-bottom10"></textarea>
+                        <label class="m-bottom5">Language*</label>
+                        <select class="form-control" name="language" id="language">
+                            <option value="0">Indonesia</option>
+                            <option value="1">English</option>
+                        </select>
                         <!-- <label class="m-bottom5">File</label>
                         <input type="file" name="anotherfile" id="anotherfile" class="form-control m-bottom10" accept="application/pdf"> -->
                     </div>

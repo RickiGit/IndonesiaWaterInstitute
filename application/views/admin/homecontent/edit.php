@@ -4,7 +4,11 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Edit Home Content</h6>
+            <h6 class="m-0 font-weight-bold text-primary" style="float:left">Edit Home Content</h6>
+            <select class="form-control" style="width:200px; float:right" id="selectLanguage">
+                <option value="<?php echo base_url()?>admin/homecontent_id" <?php echo ($home['id'] == "IWIHO001") ? 'selected':''?>>Indonesia</option>
+                <option value="<?php echo base_url()?>admin/homecontent_en" <?php echo ($home['id'] == "IWIHO002") ? 'selected':''?>>English</option>
+            </select>
         </div>
         <div class="card-body">
             <form enctype="multipart/form-data" id="submitEditHomeContent" action="<?php echo base_url()?>admin/updatehomecontent/<?php echo $home['id']?>">
@@ -15,7 +19,7 @@
                         <textarea name="descabout" id="descabout" class="form-control m-bottom10"><?php echo $home['about']?></textarea>
                         <label class="m-bottom5">Description Services IWI**</label>
                         <textarea name="descservices" id="descservices" class="form-control m-bottom10"><?php echo $home['services']?></textarea>
-                        <label class="m-bottom5">Description Project IWI**</label>
+                        <label class="m-bottom5">Description Client IWI**</label>
                         <textarea name="descproject" id="descproject" class="form-control m-bottom10"><?php echo $home['project']?></textarea>
                         <label class="m-bottom5">Description Teams IWI**</label>
                         <textarea name="descteams" id="descteams" class="form-control m-bottom10"><?php echo $home['teams']?></textarea>

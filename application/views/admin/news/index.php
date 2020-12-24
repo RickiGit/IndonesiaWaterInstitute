@@ -13,6 +13,7 @@
                     <thead>
                         <tr>
                             <th>Title</th>
+                            <th>Language</th>
                             <th>Created By</th>
                             <th>Created</th>
                             <th></th>
@@ -24,6 +25,7 @@
                         ?>
                             <tr>
                                 <td><?php echo $n['title']?></td>
+                                <td><?php echo ($n['language'] == 0) ? 'Indonesia':'English'?></td>
                                 <td><?php echo $n['createdby']?></td>
                                 <td><?php echo date("j F Y", strtotime($n['created']))?></td>
                                 <td>

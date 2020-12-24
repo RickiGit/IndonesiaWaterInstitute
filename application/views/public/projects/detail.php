@@ -45,7 +45,7 @@
             <div class="entry-footer clearfix">
                 <div class="float-right share">
                     <a href="http://twitter.com/share?url=<?php echo base_url()?>project/detail/<?php echo rawurlencode($project['title'])?>" target="_blank" title="Share on Twitter"><i class="icofont-twitter"></i></a>
-                    <a href="http://www.facebook.com/sharer.php?href=<?php echo base_url()?>project/detail/<?php echo rawurlencode($project['title'])?>" target="_blank" title="Share on Facebook"><i class="icofont-facebook"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo base_url()?>project/detail/<?php echo rawurlencode($project['title'])?>" target="_blank" title="Share on Facebook"><i class="icofont-facebook"></i></a>
                     <a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url()?>project/detail/<?php echo rawurlencode($project['title'])?>" target="_blank" title="Share on Linkedin"><i class="icofont-linkedin"></i></a>
                 </div>
             </div>

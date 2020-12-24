@@ -14,6 +14,11 @@
                         <input type="text" name="title" id="title" class="form-control m-bottom10" value="<?php echo $slide['title']?>">
                         <label class="m-bottom5">Description*</label>
                         <textarea name="description" id="description" class="form-control m-bottom10"><?php echo $slide['description']?></textarea>
+                        <label class="m-bottom5">Language*</label>
+                        <select class="form-control" name="language" id="language">
+                            <option value="0" <?php echo ($slide['language'] == 0) ? 'selected':''?>>Indonesia</option>
+                            <option value="1" <?php echo ($slide['language'] == 1) ? 'selected':''?>>English</option>
+                        </select>
                     </div>
                 </div>
                 <hr>

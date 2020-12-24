@@ -18,6 +18,11 @@
                         <input type="hidden" name="currentimage" id="currentimage" value="<?php echo $news['cover']?>">
                         <label class="m-bottom5">Content*</label>
                         <textarea name="editcontentdesc" id="editcontentdesc" class="form-control m-bottom10"><?php echo $news['content']?></textarea>
+                        <label class="m-bottom5">Language*</label>
+                        <select class="form-control" name="language" id="language">
+                            <option value="0" <?php echo ($news['language'] == 0) ? 'selected':''?>>Indonesia</option>
+                            <option value="1" <?php echo ($news['language'] == 1) ? 'selected':''?>>English</option>
+                        </select>
                         <!-- <label class="m-bottom5">File</label>
                         <input type="file" name="anotherfile" id="anotherfile" class="form-control m-bottom10" accept="application/pdf"> -->
                     </div>

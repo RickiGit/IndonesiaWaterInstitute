@@ -14,6 +14,11 @@
             return $this->db->get_where($table, [$column => $id])->row_array();
         }
 
+        public function getCount($table, $column, $value){
+            $query = $this->db->query("SELECT COUNT($column) as total FROM $table WHERE $column = $value");
+            return $query->row();
+        }
+
         public function getAllByColumn($table, $column, $value){
             $query = $this->db->query("SELECT * FROM $table WHERE $column = $value");
             return $query->result_array();

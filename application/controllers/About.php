@@ -11,10 +11,19 @@ class About extends CI_Controller {
 
 	public function index()
 	{
-		$data['teams'] = $this->GlobalModel->getAll('teams');
-		$data['about'] = $this->GlobalModel->getById('about', 'IWIABO1');
-		$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
-		$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
-		$this->load->view('view_public_about', $data);
+		$language = $this->session->userdata('site_lang');
+		if($language == "english" || $language == ""){
+			$data['teams'] = $this->GlobalModel->getAll('teams');
+			$data['about'] = $this->GlobalModel->getById('about', 'IWIABO2');
+			$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO002');
+			$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
+			$this->load->view('view_public_about', $data);
+		}else{
+			$data['teams'] = $this->GlobalModel->getAll('teams');
+			$data['about'] = $this->GlobalModel->getById('about', 'IWIABO1');
+			$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
+			$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
+			$this->load->view('view_public_about', $data);
+		}
 	}
 }

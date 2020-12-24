@@ -12,6 +12,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Logo</th>
                             <th>Name</th>
                             <th>Country</th>
                             <th></th>
@@ -22,6 +23,7 @@
                             foreach($client as $c){
                         ?>
                             <tr>
+                                <td><img src="<?php echo base_url()?>assets/images/clients/<?php echo $c['image']?>" class="rounded-circle" style="width:50px;"></td>
                                 <td><?php echo $c['name']?></td>
                                 <td><?php echo $c['country']?></td>
                                 <td>

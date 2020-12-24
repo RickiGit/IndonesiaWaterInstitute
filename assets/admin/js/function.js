@@ -2,6 +2,14 @@ var getUrl = window.location;
 var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
 $(document).ready(function(){
+    $('#selectLanguage').on('change', function () {
+        var url = $(this).val(); // get selected value
+        if (url) { // require a URL
+            window.location = url; // redirect
+        }
+        return false;
+    });
+
     $('#vision').summernote({
         height: "150px",
         callbacks: {
@@ -822,6 +830,12 @@ $("#submitEditHomeContent").on('submit' , function(e) {
     var desclead=$('#desclead').val();
 
     var urlAction = $('#submitEditHomeContent').attr('action');
+    var endUrl = "id";
+    if(id == "IWIHO001"){
+        endUrl = "homecontent_id";
+    }else{
+        endUrl = "homecontent_en";
+    }
 
     var formData = new FormData(this);
 
@@ -838,7 +852,7 @@ $("#submitEditHomeContent").on('submit' , function(e) {
             contentType: false,
             success: function(data){
                 alert(data);
-                window.location = baseUrl + '/admin/homecontent';
+                window.location = baseUrl + '/admin/' + endUrl;
             }
         });
     }
@@ -847,6 +861,39 @@ $("#submitEditHomeContent").on('submit' , function(e) {
 });
 
 
+// Check Login
+$("#loginform").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+    var name=$('#email').val();
+    var password=$('#password').val();
+
+    var formData = new FormData(this);
+
+    if(name == "" || password == ""){
+        alert("Name, and Password can't be empty");
+    }
+    else{
+        $.ajax({
+            url:"admin/login",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                if(data != "1"){
+                    alert("Username or Password is wrong");
+                }else{
+                    window.location = baseUrl + '/admin/slideheader';
+                }
+            }
+        });
+    }
+
+    return false;
+});
 
 // Clear Form Teams
 function clearFormTeams(){

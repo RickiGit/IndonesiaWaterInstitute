@@ -14,6 +14,11 @@
                         <input type="text" name="title" id="title" class="form-control m-bottom10">
                         <label class="m-bottom5">Description*</label>
                         <textarea name="description" id="description" class="form-control m-bottom10"></textarea>
+                        <label class="m-bottom5">Language*</label>
+                        <select class="form-control" name="language" id="language">
+                            <option value="0">Indonesia</option>
+                            <option value="1">English</option>
+                        </select>
                     </div>
                 </div>
                 <hr>

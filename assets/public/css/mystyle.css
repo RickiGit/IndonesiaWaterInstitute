@@ -144,3 +144,17 @@
         padding: 0;
     }
 }
+
+.blog .entry .entry-content .read-more a {
+    display: inline-block;
+    background: #06c199;
+    color: #fff;
+    padding: 6px 20px 8px 20px;
+    transition: 0.3s;
+    font-size: 14px;
+    border-radius: 50px;
+}
+
+#hero{
+    min-height: 600px;
+}

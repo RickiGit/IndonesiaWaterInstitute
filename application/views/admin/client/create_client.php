@@ -22,6 +22,8 @@
                                 }
                             ?>
                         </select>
+                        <label class="m-bottom5">Logo</label>
+                        <input type="file" name="image" id="image" class="form-control m-bottom10">
                     </div>
                 </div>
                 <hr>
