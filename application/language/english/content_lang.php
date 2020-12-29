@@ -48,4 +48,7 @@
     $lang['usefullinks'] = "USEFUL LINKS";
     $lang['contactfooter'] = "CONTACT US";
     $lang['aboutfooter'] = "ABOUT IWI";
+
+    //
+    $lang['projectempty'] = "No Project in English";
 ?>

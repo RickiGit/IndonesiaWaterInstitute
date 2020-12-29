@@ -33,6 +33,11 @@
             $this->db->update($table, $data);
         }
 
+        public function updateByName($table, $column, $data, $value){
+            $this->db->where($column, $value);
+            $this->db->update($table, $data);
+        }
+
         public function delete($table, $id){
             $this->db->where('id', $id);
             $this->db->delete($table);

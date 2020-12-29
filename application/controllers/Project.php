@@ -49,15 +49,15 @@ class Project extends CI_Controller {
 		$this->pagination->initialize($config);		
 
 		$language = $this->session->userdata('site_lang');
-		if($language != "english"){
+		if($language == "english" || $language == ""){
 			$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO001');
 			$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
-			$data['project'] = $this->ProjectModel->getProject($config['per_page'], $page, 0);
+			$data['project'] = $this->ProjectModel->getProject($config['per_page'], $page, 1);
 			$this->load->view('view_public_project', $data);
 		}else{
 			$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO002');
 			$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
-			$data['project'] = $this->ProjectModel->getProject($config['per_page'], $page, 1);
+			$data['project'] = $this->ProjectModel->getProject($config['per_page'], $page, 0);
 			$this->load->view('view_public_project', $data);
 		}
 	}
@@ -116,10 +116,20 @@ class Project extends CI_Controller {
 	}
 
 	public function detail($title){
+		// Update Hits
+		$data['project'] = $this->GlobalModel->getByName('projects', 'title', rawurldecode($title));
+		$totalview = $data['project']['totalview'];
+		$data = array(
+			'totalview' => $totalview + 1
+		);
+
+		$this->GlobalModel->updateByName('projects','title', $data, rawurldecode($title));
+
+		// Get Detail
 		$language = $this->session->userdata('site_lang');
 		if($language == "english" || $language == ""){
-			$data['recent'] = $this->ProjectModel->get10RecentProject(1);
 			$data['project'] = $this->GlobalModel->getByName('projects', 'title', rawurldecode($title));
+			$data['recent'] = $this->ProjectModel->get10RecentProject(1);
 			$data['home'] = $this->GlobalModel->getById('homecontent', 'IWIHO002');
 			$data['contact'] = $this->GlobalModel->getById('contact', 'IWICO01');
 			$this->load->view('view_public_project_detail', $data);

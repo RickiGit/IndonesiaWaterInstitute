@@ -36,7 +36,7 @@
       <div class="container">
 
         <div class="row">
-          <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
+          <div class="col-md-4 col-lg-4 align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
             <div class="icon-box">
             <h2 class="header-title">40+</h2>
               <h4 class="title"><a href=""><?php echo $this->lang->line('client') ?></a></h4>
@@ -44,7 +44,7 @@
             </div>
           </div>
 
-          <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-md-4 col-lg-4 align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
             <h2 class="header-title">16+</h2>
               <h4 class="title"><a href=""><?php echo $this->lang->line('finishproject') ?></a></h4>
@@ -52,7 +52,7 @@
             </div>
           </div>
 
-          <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-md-4 col-lg-4 align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
               <!-- <div class="icon"><i class="bx bx-tachometer"></i></div> -->
               <h2 class="header-title">12</h2>

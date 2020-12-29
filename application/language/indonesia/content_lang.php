@@ -48,4 +48,7 @@
     $lang['usefullinks'] = "TAUTAN BERGUNA";
     $lang['contactfooter'] = "KONTAK KAMI";
     $lang['aboutfooter'] = "TENTANG IWI";
+
+    //
+    $lang['projectempty'] = "Tidak ada Proyek bahasa Indonesia";
 ?>

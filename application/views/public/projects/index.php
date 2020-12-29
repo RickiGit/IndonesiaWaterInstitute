@@ -21,46 +21,50 @@
         <div class="row">
 
           <?php
-            foreach($project as $p){
-          ?>
-            <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-              <article class="entry">
-
-                <div class="entry-img">
-                  <img src="<?php echo base_url()?>assets/images/projectcover/<?php echo $p->cover?>" style="height:190px" alt="" class="img-fluid">
-                </div>
-                
-                <div class="entry-meta">
-                  <ul>
-                    <li class="d-flex align-items-center"><i class="icofont-user"></i><?php echo $p->createdby?></li>
-                    <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i><time><?php echo date("j F Y", strtotime($p->created))?></time></li>
-                  </ul>
-                </div>
-
-                <h2 class="entry-title">
-                  <a href="<?php echo base_url()?>project/detail/<?php echo rawurlencode($p->title)?>"><?php echo $p->title?></a>
-                </h2>
-
-                <div class="entry-content">
-                  <!-- <p>
-                    <?php 
-                      $content = $p->content;
-                      if(strlen($content) > 300){
-                        $content = substr($content, 0, 300);
-                        $content .= "...";
-                      }
-
-                      echo $content;
-                    ?>
-                  </p> -->
-                  <div class="read-more">
-                    <a href="<?php echo base_url()?>project/detail/<?php echo rawurlencode($p->title)?>"><?php echo $this->lang->line('readmore') ?></a>
+            if(count($project) > 0){
+              foreach($project as $p){
+                ?>
+                  <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                    <article class="entry">
+      
+                      <div class="entry-img">
+                        <img src="<?php echo base_url()?>assets/images/projectcover/<?php echo $p->cover?>" style="height:190px" alt="" class="img-fluid">
+                      </div>
+                      
+                      <div class="entry-meta">
+                        <ul>
+                          <li class="d-flex align-items-center"><i class="icofont-user"></i><?php echo $p->createdby?></li>
+                          <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i><time><?php echo date("j F Y", strtotime($p->created))?></time></li>
+                        </ul>
+                      </div>
+      
+                      <h2 class="entry-title">
+                        <a href="<?php echo base_url()?>project/detail/<?php echo rawurlencode($p->title)?>"><?php echo $p->title?></a>
+                      </h2>
+      
+                      <div class="entry-content">
+                        <!-- <p>
+                          <?php 
+                            $content = $p->content;
+                            if(strlen($content) > 300){
+                              $content = substr($content, 0, 300);
+                              $content .= "...";
+                            }
+      
+                            echo $content;
+                          ?>
+                        </p> -->
+                        <div class="read-more">
+                          <a href="<?php echo base_url()?>project/detail/<?php echo rawurlencode($p->title)?>"><?php echo $this->lang->line('readmore') ?></a>
+                        </div>
+                      </div>
+      
+                    </article><!-- End blog entry -->
                   </div>
-                </div>
-
-              </article><!-- End blog entry -->
-            </div>
-          <?php
+                <?php
+                  }
+            }else{
+              echo $this->lang->line('projectempty');
             }
           ?>
 
