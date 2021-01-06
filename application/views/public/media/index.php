@@ -21,10 +21,7 @@
             <a class="nav-link active" aria-current="page" href="<?php echo base_url()?>media/news">News</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url()?>media/book">Books</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url()?>media/journal">Journal</a>
+            <a class="nav-link" href="<?php echo base_url()?>media/event">Events</a>
         </li>
     </ul>
   </div>

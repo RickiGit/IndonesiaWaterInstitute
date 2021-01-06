@@ -76,9 +76,9 @@
           <?php
             foreach($teams as $t){
           ?>
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" style="margin-top: 15px">
               <div class="member d-flex align-items-start">
-                <div class="pic"><img src="<?php echo base_url()?>assets/images/teams/<?php echo $t['images']?>" class="img-fluid" alt=""></div>
+                <div class="pic"><img src="<?php echo base_url()?>assets/images/teams/<?php echo ($t['images'] != "" ? $t['images'] : 'avatar.jpg') ?>" class="img-fluid" alt=""></div>
                 <div class="member-info">
                   <h4><?php echo $t['name']?></h4>
                   <span><?php echo $t['position']?></span>

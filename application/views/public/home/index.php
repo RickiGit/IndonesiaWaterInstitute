@@ -237,7 +237,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1"><?php echo $captcha['image']?></span>
                 </div>
-                <input name="captcha" id="captcha" type="text" class="form-control" placeholder="<?php echo $this->lang->line('captcha') ?>" aria-label="Username" aria-describedby="basic-addon1" style="height:50px" required>
+                <input name="captcha" id="captcha" type="text" class="form-control" placeholder="<?php echo $this->lang->line('captcha')?>" aria-label="Username" aria-describedby="basic-addon1" style="height:50px" required>
               </div>
               <input type="hidden" id="valueCaptcha" value="<?php echo $captcha['word'] ?>" name="code">
               <!-- <div class="mb-3">

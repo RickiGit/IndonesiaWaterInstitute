@@ -148,8 +148,8 @@ $("#submitTeams").on('submit' , function(e) {
     var image=$('#image').val();
     var formData = new FormData(this);
 
-    if(name == "" || job == "" || graduate == "" || image == ""){
-        alert("Name, Job Position, Graduate, and Image can't be empty");
+    if(name == "" || job == "" || graduate == "" ){
+        alert("Name, Job Position, and Graduate can't be empty");
     }else{
         $.ajax({
             url:"insertteams",
@@ -383,6 +383,68 @@ $("#submitEditProjects").on('submit' , function(e) {
             success: function(data){
                 alert(data);
                 window.location = baseUrl + '/admin/projects';
+            }
+        });
+    }
+
+    return false;
+});
+
+// Insert Data Events
+$("#submitEvents").on('submit' , function(e) {
+    e.preventDefault();
+    var title=$('#title').val();
+    var content=$('#contentdesc').val();
+    var image=$('#image').val();
+    var formData = new FormData(this);
+
+    if(title == "" || content == "" || image == ""){
+        alert("Title, Cover, and Content can't be empty");
+    }else{
+        $.ajax({
+            url:"insertevent",
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                clearFormEvent();
+                alert(data);
+            }
+        });
+    }
+
+    return false;
+});
+
+
+// Update Data Events
+$("#submitEditEvent").on('submit' , function(e) {
+    e.preventDefault();
+    debugger;
+
+    var title=$('#title').val();
+    var content=$('#contentdesc').val();
+    var urlAction = $('#submitEditEvent').attr('action');
+
+    var formData = new FormData(this);
+
+    if(title == "" || content == ""){
+        alert("Title and Content can't be empty");
+    }else{
+        $.ajax({
+            url:urlAction,
+            type: "POST",
+            mimeType: "multipart/form-data",
+            data : formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+                window.location = baseUrl + '/admin/events';
             }
         });
     }
@@ -919,6 +981,13 @@ function clearFormProjects(){
     $("#contentdesc").summernote("reset");
     $("#image").val("");
     $("select#status")[0].selectedIndex = 0;
+}
+
+// Clear Form Services
+function clearFormEvent(){
+    $("#title").val("");
+    $("#contentdesc").summernote("reset");
+    $("#image").val("");
 }
 
 // Clear Form Services

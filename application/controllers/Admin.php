@@ -82,29 +82,47 @@ class Admin extends CI_Controller {
 		$instagram = $this->input->post('instagram');
 		$linkedin = $this->input->post('linkedin');
 
-        if (!$this->upload->do_upload('image'))
-        {
-            $error = $this->upload->display_errors();
-            echo $error;
-        }
-        else
-        {
-            $data = array(
-                'name' => $name,
+		if($this->upload->data("file_name") != ""){
+			if (!$this->upload->do_upload('image'))
+			{
+				$error = $this->upload->display_errors();
+				echo $error;
+			}
+			else
+			{
+				$data = array(
+					'name' => $name,
+					'position' => $position,
+					'graduate' => $graduate,
+					'facebook' => $facebook,
+					'twitter' => $twitter,
+					'instagram' => $instagram,
+					'linkedin' => $linkedin,
+					'images' => $this->upload->data("file_name"),
+					'created' => date('Y-m-d H:i:s'),
+					'createdby' => $this->session->userdata('name')
+				);
+
+				$this->GlobalModel->insert('teams', $data);
+				echo "Data saved successfully";
+			}
+		}else{
+			$data = array(
+				'name' => $name,
 				'position' => $position,
 				'graduate' => $graduate,
 				'facebook' => $facebook,
 				'twitter' => $twitter,
 				'instagram' => $instagram,
 				'linkedin' => $linkedin,
-                'images' => $this->upload->data("file_name"),
-                'created' => date('Y-m-d H:i:s'),
-                'createdby' => $this->session->userdata('name')
-            );
+				'created' => date('Y-m-d H:i:s'),
+				'createdby' => $this->session->userdata('name')
+			);
 
-            $this->GlobalModel->insert('teams', $data);
-            echo "Data saved successfully";
-        }
+			$this->GlobalModel->insert('teams', $data);
+			echo "Data saved successfully";
+		}
+        
 	}
 	
 	public function deleteteams($id){
@@ -738,6 +756,120 @@ class Admin extends CI_Controller {
 
 		$this->GlobalModel->update('book', $data, $id);
 		echo "Data changed successfully";
+	}
+
+	// Events
+	public function events(){
+		$user = $this->session->userdata('name');
+		if (!isset($user)) { redirect('admin'); }
+
+		$data['total'] = $this->GlobalModel->getCount('inbox','isread', 0);
+		$data['events'] = $this->GlobalModel->getAll('events');
+		$this->load->view('view_admin_event', $data);
+	}
+
+	public function createevent(){
+		$user = $this->session->userdata('name');
+		if (!isset($user)) { redirect('admin'); }
+
+		$data['total'] = $this->GlobalModel->getCount('inbox','isread', 0);
+		$this->load->view('view_admin_event_create', $data);
+	}
+
+	public function editevent($id){
+		$user = $this->session->userdata('name');
+		if (!isset($user)) { redirect('admin'); }
+
+		$data['total'] = $this->GlobalModel->getCount('inbox','isread', 0);
+		$data['events'] = $this->GlobalModel->getById('events', $id);
+		$this->load->view('view_admin_event_edit', $data);
+	}
+
+	public function insertevent(){
+		$config['upload_path']          = './assets/images/events/';
+        $config['allowed_types']        = 'gif|jpg|png';
+		$config['overwrite']			= true;
+
+		$this->upload->initialize($config);
+		$this->load->library('upload', $config);
+
+		$title = $this->input->post('title');
+		$content = $this->input->post('contentdesc');
+		$language = $this->input->post('language');
+
+        if (!$this->upload->do_upload('image'))
+        {
+            $error = $this->upload->display_errors();
+            echo $error;
+        }
+        else
+        {
+            $data = array(
+                'title' => $title,
+				'content' => $content,
+				'language' => $language,
+                'cover' => $this->upload->data("file_name"),
+                'created' => date('Y-m-d H:i:s'),
+                'createdby' => $this->session->userdata('name')
+            );
+
+            $this->GlobalModel->insert('events', $data);
+            echo "Data saved successfully";
+        }
+	}
+
+	public function updateevent($id){
+		$config['upload_path']          = './assets/images/events/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['overwrite']			= true;
+
+        $this->upload->initialize($config);
+        $this->load->library('upload', $config);
+
+        $title = $this->input->post('title');
+		$content = $this->input->post('editcontentdesc');
+		$currentImage = $this->input->post('currentimage');
+		$language = $this->input->post('language');
+
+        if (!empty($_FILES['image']['name'])) {
+            if (!$this->upload->do_upload('image'))
+            {
+                $error = $this->upload->display_errors();
+                echo $error;
+            }
+            else
+            {
+                $data = array(
+                    'title' => $title,
+					'content' => $content,
+					'language' => $language,
+                	'cover' => $this->upload->data("file_name"),
+					'modified' => date('Y-m-d H:i:s'),
+					'modifiedby' => $this->session->userdata('name')
+                );
+
+                unlink(FCPATH.'assets/images/events/'.$currentImage);
+                $this->GlobalModel->update('events', $data, $id);
+                echo "Data changed successfully";
+            }
+        }else{
+            $data = array(
+				'title' => $title,
+				'content' => $content,
+				'language' => $language,
+				'modified' => date('Y-m-d H:i:s'),
+				'modifiedby' => $this->session->userdata('name')
+			);
+
+            $this->GlobalModel->update('events', $data, $id);
+            echo "Data changed successfully";
+        }
+	}
+
+	public function deleteevent($id){
+        $data['item'] = $this->GlobalModel->getById('events',$id);
+		$this->GlobalModel->delete('events', $id);
+        redirect('admin/events');
 	}
 
 	// News

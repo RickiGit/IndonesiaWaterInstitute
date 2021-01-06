@@ -37,6 +37,9 @@
     $lang['phone'] = 'Telepon';
     $lang['yourname'] = 'Nama Anda';
     $lang['youremail'] = 'Email Anda';
+    $lang['yourphone'] = 'Telepon Anda';
+    $lang['company'] = 'Nama Perusahaan atau Universitas';
+    $lang['position'] = 'Jabatan atau Jurusan';
     $lang['subject'] = 'Subjek';
     $lang['message'] = 'Pesan';
     $lang['captcha'] = "Masukan Captcha";
@@ -49,6 +52,18 @@
     $lang['usefullinks'] = "TAUTAN BERGUNA";
     $lang['contactfooter'] = "KONTAK KAMI";
     $lang['aboutfooter'] = "TENTANG IWI";
+
+    // Publication
+    $lang['nomor'] = 'Nomor';
+    $lang['book'] = 'Buku';
+    $lang['journal'] = 'Jurnal';
+    $lang['booktitle'] = "Judul Buku";
+    $lang['papertitle'] = 'Judul Jurnal';
+    $lang['author'] = 'Penulis';
+    $lang['publisherpaper'] = 'Diterbitkan';
+    $lang['publisher'] = 'Diterbitkan';
+    $lang['bookjournal'] = 'Nama Buku / Jurnal';
+    $lang['sentrequest'] = 'Kirim Permintaan';
 
     //
     $lang['projectempty'] = "Tidak ada Proyek bahasa Indonesia";

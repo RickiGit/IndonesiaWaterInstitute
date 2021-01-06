@@ -19,21 +19,12 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <!-- <tfoot>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job Position</th>
-                            <th>Graduate</th>
-                            <th></th>
-                        </tr>
-                    </tfoot> -->
                     <tbody>
                         <?php
                             foreach($teams as $t){
                         ?>
                             <tr>
-                                <td><img src="<?php echo base_url()?>assets/images/teams/<?php echo $t['images']?>" class="rounded-circle" style="width:50px;"></td>
+                                <td><img src="<?php echo base_url()?>assets/images/teams/<?php echo ($t['images'] != "" ? $t['images'] : 'avatar.jpg') ?>" class="rounded-circle" style="width:50px;"></td>
                                 <td><?php echo $t['name']?></td>
                                 <td><?php echo $t['position']?></td>
                                 <td><?php echo $t['graduate']?></td>

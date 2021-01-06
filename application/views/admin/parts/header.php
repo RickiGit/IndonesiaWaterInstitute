@@ -105,10 +105,23 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Media</span>
                 </a>
-                <div id="collapseOne" class="collapse <?php echo ($pageActive == 'media' || $pageActive == 'news' || $pageActive == 'book' ? 'show':'')?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseOne" class="collapse <?php echo ($pageActive == 'media' || $pageActive == 'news' ? 'show':'')?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">List Media</h6>
                         <a class="collapse-item <?php echo ($pageActive == 'news' ? 'active':'')?>" href="<?php echo base_url()?>admin/news">News</a>
+                        <a class="collapse-item <?php echo ($pageActive == 'events' ? 'active':'')?>" href="<?php echo base_url()?>admin/events">Events</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePublication"
+                    aria-expanded="true" aria-controls="collapsePublication">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Publication</span>
+                </a>
+                <div id="collapsePublication" class="collapse <?php echo ($pageActive == 'publication' || $pageActive == 'book' ? 'show':'')?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">List Publication</h6>
                         <a class="collapse-item <?php echo ($pageActive == 'book' ? 'active':'')?>" href="<?php echo base_url()?>admin/book">Book & Journal</a>
                     </div>
                 </div>
@@ -185,26 +198,6 @@
                     </button>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Nav Item - Messages -->
-                        <!-- <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bahasa</span>
-                            </a> -->
-                            <!-- Dropdown - User Information -->
-                            <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    English
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Bahasa
-                                </a>
-                            </div>
-                        </li> -->
-
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="<?php echo base_url()?>admin/inbox" role="button">
                                 <i class="fas fa-envelope fa-fw"></i>

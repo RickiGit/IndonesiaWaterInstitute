@@ -37,6 +37,9 @@
     $lang['phone'] = 'Phone';
     $lang['yourname'] = 'Your Name';
     $lang['youremail'] = 'Your Email';
+    $lang['yourphone'] = 'Your Phone';
+    $lang['company'] = 'Company Name or University';
+    $lang['position'] = 'Position or Major';
     $lang['subject'] = 'Subject';
     $lang['message'] = 'Message';
     $lang['captcha'] = "Input Captcha";
@@ -50,6 +53,18 @@
     $lang['contactfooter'] = "CONTACT US";
     $lang['aboutfooter'] = "ABOUT IWI";
 
+    // Publication
+    $lang['nomor'] = 'Nomor';
+    $lang['book'] = 'Books';
+    $lang['journal'] = 'Journal';
+    $lang['booktitle'] = "Book Title";
+    $lang['papertitle'] = 'Paper Title';
+    $lang['author'] = 'Author(s)';
+    $lang['publisherpaper'] = 'Presented and/or Published';
+    $lang['publisher'] = 'Published';
+    $lang['bookjournal'] = 'Book / Journal Title';
+    $lang['sentrequest'] = 'Send Request';
+    
     //
     $lang['projectempty'] = "No Project in English";
 ?>

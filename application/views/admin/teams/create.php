@@ -16,7 +16,7 @@
                         <input type="text" name="position" id="position" class="form-control m-bottom10">
                         <label class="m-bottom5">Graduate*</label>
                         <input type="text" name="graduate" id="graduate" class="form-control m-bottom10">
-                        <label class="m-bottom5">Image*</label>
+                        <label class="m-bottom5">Image</label>
                         <input type="file" name="image" id="image" class="form-control m-bottom10">
                     </div>
                     <div class="col col-md-6">
