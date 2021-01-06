@@ -80,7 +80,8 @@
           <li class="<?php echo ($pageActive == 'about' ? 'active':'')?>"><a href="<?php echo base_url()?>about"><?php echo $this->lang->line('about') ?></a></li>
           <li class="<?php echo ($pageActive == 'client' ? 'active':'')?>"><a href="<?php echo base_url()?>client"><?php echo $this->lang->line('client') ?></a></li>
           <li class="<?php echo ($pageActive == 'project' ? 'active':'')?>"><a href="<?php echo base_url()?>project"><?php echo $this->lang->line('project') ?></a></li>
-          <li class="<?php echo ($pageActive == 'news' || $pageActive == 'book' || $pageActive == 'journal' ? 'active':'')?>"><a href="<?php echo base_url()?>media/news"><?php echo $this->lang->line('media') ?></a></li>
+          <li class="<?php echo ($pageActive == 'news' || $pageActive == 'event' ? 'active':'')?>"><a href="<?php echo base_url()?>media/news"><?php echo $this->lang->line('media') ?></a></li>
+          <li class="<?php echo ($pageActive == 'book' || $pageActive == 'journal' ? 'active':'')?>"><a href="<?php echo base_url()?>publication/book"><?php echo $this->lang->line('publication') ?></a></li>
           <li class="<?php echo ($pageActive == 'contact' ? 'active':'')?>"><a href="<?php echo base_url()?>contact"><?php echo $this->lang->line('contact') ?></a></li>
 
         </ul>

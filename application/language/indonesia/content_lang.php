@@ -8,6 +8,7 @@
     $lang['project'] = 'Proyek';
     $lang['media'] = 'Media';
     $lang['contact'] = 'Kontak';
+    $lang['publication'] = 'Publikasi';
 
     // Header
     $lang['aboutiwi'] = 'Tentang IWI';

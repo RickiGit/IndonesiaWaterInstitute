@@ -8,6 +8,7 @@
     $lang['project'] = 'Project';
     $lang['media'] = 'Media';
     $lang['contact'] = 'Contact';
+    $lang['publication'] = 'Publication';
 
     // Header
     $lang['aboutiwi'] = 'About IWI';
