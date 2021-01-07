@@ -35,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <!-- <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div> -->
@@ -123,6 +123,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">List Publication</h6>
                         <a class="collapse-item <?php echo ($pageActive == 'book' ? 'active':'')?>" href="<?php echo base_url()?>admin/book">Book & Journal</a>
+                        <a class="collapse-item <?php echo ($pageActive == 'bookrequest' ? 'active':'')?>" href="<?php echo base_url()?>admin/bookrequest">Customer Request</a>
                     </div>
                 </div>
             </li>
@@ -221,7 +222,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php $this->session->userdata('email'); ?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="<?php echo base_url()?>assets/images/user/<?php echo $this->session->userdata('image');?>">
+                                    src="<?php echo base_url()?>assets/images/user/<?php echo ($this->session->userdata('image') != '' ? $this->session->userdata('image') : 'avatar.jpg');?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

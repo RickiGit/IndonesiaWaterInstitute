@@ -35,11 +35,11 @@
           <?php
             foreach($event as $n){
           ?>
-            <div class="col-lg-6 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
               <article class="entry">
 
                 <div class="entry-img">
-                  <img src="<?php echo base_url()?>assets/images/events/<?php echo $n->cover?>" style="height:190px" alt="" class="img-fluid">
+                  <img src="<?php echo base_url()?>assets/images/events/<?php echo $n->cover?>" class="img-fluid center-cropped">
                 </div>
 
                 <h2 class="entry-title">
