@@ -10,6 +10,7 @@ class Admin extends CI_Controller {
 		$this->load->model("GlobalModel");
 		$this->load->model("ClientModel");
 		$this->load->model("AuthModel"); 
+		$this->load->model("BookModel"); 
 	}
 
 	public function index()
@@ -127,7 +128,9 @@ class Admin extends CI_Controller {
 	
 	public function deleteteams($id){
         $data['item'] = $this->GlobalModel->getById('teams',$id);
-        unlink(FCPATH.'assets/images/teams/'.$item['images']);
+        if($data['item']['images'] != ""){
+			unlink(FCPATH.'assets/images/teams/'.$item['item']['images']);
+		}
 
         $this->GlobalModel->delete('teams', $id);
         redirect('admin/teams');
@@ -413,7 +416,10 @@ class Admin extends CI_Controller {
 
 	public function deleteProject($id){
         $data['item'] = $this->GlobalModel->getById('projects',$id);
-        $this->GlobalModel->delete('projects', $id);
+		$this->GlobalModel->delete('projects', $id);
+		if($data['item']['cover'] != ""){
+			unlink(FCPATH.'assets/images/projectcover/'.$data['item']['cover']);
+		}
         redirect('admin/projects');
 	}
 
@@ -582,6 +588,11 @@ class Admin extends CI_Controller {
 	public function deleteclient($id){
         $data['item'] = $this->GlobalModel->getById('client',$id);
 		$this->GlobalModel->delete('client', $id);
+
+		if($data['item']['image'] != ""){
+			unlink(FCPATH.'assets/images/clients/'.$data['item']['image']);
+		}
+		
         redirect('admin/client');
 	}
 
@@ -694,6 +705,15 @@ class Admin extends CI_Controller {
 		$data['total'] = $this->GlobalModel->getCount('inbox','isread', 0);
 		$data['book'] = $this->GlobalModel->getAll('book');
 		$this->load->view('view_admin_book', $data);
+	}
+
+	public function bookrequest(){
+		$user = $this->session->userdata('name');
+		if (!isset($user)) { redirect('admin'); }
+
+		$data['total'] = $this->GlobalModel->getCount('inbox','isread', 0);
+		$data['request'] = $this->BookModel->getAllRequest();
+		$this->load->view('view_admin_book_request', $data);
 	}
 
 	public function createbook(){
@@ -869,6 +889,9 @@ class Admin extends CI_Controller {
 	public function deleteevent($id){
         $data['item'] = $this->GlobalModel->getById('events',$id);
 		$this->GlobalModel->delete('events', $id);
+		if($data['item']['cover'] != ""){
+			unlink(FCPATH.'assets/images/events/'.$data['item']['cover']);
+		}
         redirect('admin/events');
 	}
 
@@ -983,6 +1006,11 @@ class Admin extends CI_Controller {
 	public function deletenews($id){
         $data['item'] = $this->GlobalModel->getById('news',$id);
 		$this->GlobalModel->delete('news', $id);
+
+		if($data['item']['cover'] != ""){
+			unlink(FCPATH.'assets/images/news/'.$data['item']['cover']);
+		}
+
         redirect('admin/news');
 	}
 
@@ -1016,6 +1044,11 @@ class Admin extends CI_Controller {
 	public function deleteuser($id){
         $data['item'] = $this->GlobalModel->getById('user',$id);
 		$this->GlobalModel->delete('user', $id);
+
+		if($data['item']['image'] != ""){
+			unlink(FCPATH.'assets/images/user/'.$data['item']['image']);
+		}
+
         redirect('admin/user');
 	}
 	

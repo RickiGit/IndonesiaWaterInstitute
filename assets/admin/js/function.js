@@ -215,6 +215,13 @@ $("#submitEditAbout").on('submit' , function(e) {
     var history=$('#history').val();
     var urlAction = $('#submitEditAbout').attr('action');
 
+    var endUrl = "id";
+    if(id == "IWIABO1"){
+        endUrl = "about_id";
+    }else{
+        endUrl = "about_en";
+    }
+
     var formData = new FormData(this);
 
     if(vision == "" || mission == "" || strategy == "" || history == ""){
@@ -230,7 +237,7 @@ $("#submitEditAbout").on('submit' , function(e) {
             contentType: false,
             success: function(data){
                 alert(data);
-                window.location = baseUrl + '/admin/about';
+                window.location = baseUrl + '/admin/' + endUrl;
             }
         });
     }

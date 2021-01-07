@@ -28,7 +28,7 @@
                     <article class="entry">
       
                       <div class="entry-img">
-                        <img src="<?php echo base_url()?>assets/images/projectcover/<?php echo $p->cover?>" style="height:190px" alt="" class="img-fluid">
+                        <img src="<?php echo base_url()?>assets/images/projectcover/<?php echo $p->cover?>" alt="" class="img-fluid center-cropped">
                       </div>
                       
                       <div class="entry-meta">

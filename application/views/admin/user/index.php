@@ -25,7 +25,7 @@
                             foreach($user as $u){
                         ?>
                             <tr>
-                                <td><img src="<?php echo base_url()?>assets/images/user/<?php echo $u['image']?>" class="rounded-circle" style="width:50px;"></td>
+                                <td><img src="<?php echo base_url()?>assets/images/user/<?php echo ($u['image'] != '' ? $u['image'] : 'avatar.jpg')?>" class="rounded-circle" style="width:50px;"></td>
                                 <td><?php echo $u['name']?></td>
                                 <td><?php echo $u['phone']?></td>
                                 <td><?php echo $u['email']?></td>
